@@ -1,8 +1,12 @@
 body {
-  color: #40514E;
+
   margin: 0;
   text-align: center;
   font-family: 'Merriweather', serif;
+  background-color: #1e2021;
+  
+
+
 }
 
 h1 {
@@ -14,9 +18,9 @@ h1 {
 
 h2 {
   color: #66BFBF;
-  font-size: 2.5rem;
+  font-size: 5rem;
   font-family: 'Montserrat', sans-serif;
-  font-weight: bolder;
+  font-weight: 400;
   padding-bottom:10px;
   }
 
@@ -28,6 +32,7 @@ h3 {
 
 p{
   line-height: 2;
+  color: #eeece9
 }
 
 a {
@@ -75,18 +80,20 @@ hr{
 }
 
 .top-container {
-  background-color: #E4F9F5;
+  background-color: rgb(19 64 57);
   position: relative;
   padding-top: 90px;
 }
 
 .middle-container {
   margin: 100px 0;
+  background-color: #1e2021;
 }
 
 .bottom-container {
-  background-color: #66BFBF;
+  background-color: rgb(59 134 134);
   padding: 50px 0 20px;
+
 }
 .bottom-container a {
   text-decoration: none;
@@ -137,10 +144,10 @@ hr{
   -moz-border-radius: 8;
   border-radius: 10px;
   font-family: 'Montserrat', sans-serif;
-  
+
   font-size: 20px;
   padding: 10px 20px 10px 20px;
-  
+
 }
 
 .btn:hover {
