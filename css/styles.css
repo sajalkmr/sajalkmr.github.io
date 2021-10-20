@@ -4,7 +4,7 @@ body {
   text-align: center;
   font-family: 'Merriweather', serif;
   background-color: #1e2021;
-  
+
 
 
 }
@@ -86,8 +86,9 @@ hr{
 }
 
 .middle-container {
-  margin: 100px 0;
+  padding-top: 100px;
   background-color: #1e2021;
+  padding-bottom: 100px;
 }
 
 .bottom-container {
