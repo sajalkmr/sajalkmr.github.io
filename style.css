@@ -47,7 +47,7 @@ a{
 /* section 2 */
 .section-2{
     padding-top: 18vh;
-    width: 70%;
+    
     text-align: center;
 }
 
@@ -60,7 +60,6 @@ a{
 .section-2 p{
     font-size: 1.1rem;
     padding-bottom: 10px;
-    margin:0;
 }
 
 .section-2 a{
@@ -99,8 +98,8 @@ a{
         padding-top: 3rem;
     }
     .section-2{
-        padding: 0;
-        padding-left: 0;
-        padding-top: 2rem;
+        
+        
+        padding-top: 3rem;
     }
 }
