@@ -2,8 +2,13 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 .grid-2 {
-    display: grid;
+    
     grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 body {
@@ -14,6 +19,17 @@ body {
     color: #7A7C80;
 
 }
+
+h1{
+    color: #0c0000;
+  font-size: 3em;
+  font-weight: 700;
+  text-shadow: 2px 2px rgb(125, 123, 123);
+  background: linear-gradient(to right, #5c5a5a, #393838);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease-in-out;
+  }
 
 h2,
 .white {
@@ -27,7 +43,7 @@ a {
 
 /* section 1 */
 .section-1 {
-    padding-top: 35vh;
+    padding-top: 12rem;
     text-align: center;
 }
 
@@ -63,14 +79,16 @@ a {
 .section-2 p {
     font-size: 1.1rem;
     padding-bottom: 10px;
+    text-align: center;
 }
 
 .section-2 a {
     display: block;
-    padding: 5px;
+    padding: 
     font-size: 1.2rem;
-    padding-left: 0;
+    padding-left: 
     width: 100px;
+    text-align: center;
 }
 
 /* animations / utilities */
@@ -78,7 +96,7 @@ a {
     font-size: 1.3rem;
     color: #fff;
     cursor: pointer;
-    transition: 0.2s;
+    transition: 0.1s;
 }
 
 .section-1 a:hover {
@@ -94,13 +112,30 @@ a {
 
 
 .icon {
-    font-size: 1.75em;
+    font-size: 1.5em;
 }
 
 
+footer {
+    background-color: #1a1a1a; /* adding background color */
+    color: #fff; /* text color */
+    padding: 2em; /* padding around the footer content */
+    text-align: center; /* center align the text */
+    font-weight: 700;
+    
+    
+  }
+  
 
 
 
+
+
+
+
+
+
+  
 /* media queres */
 /* CSS for very small screens (mobile devices) */
 @media (max-width: 480px) {
@@ -111,7 +146,7 @@ a {
     }
 
     .section-1 {
-        padding-top: 1rem;
+        padding-top: 12rem;
     }
 
     .section-2 {
@@ -128,7 +163,7 @@ a {
     }
 
     .section-1 {
-        padding-top: 2rem;
+        padding-top: 12rem;
     }
 
     .section-2 {
@@ -145,7 +180,7 @@ a {
     }
 
     .section-1 {
-        padding-top: 3rem;
+        padding-top: 12rem;
     }
 
     .section-2 {
@@ -153,17 +188,10 @@ a {
     }
 }
 
-/* CSS for larger screens */
-@media (min-width: 980px) {
+
+@media only screen and (max-width: 600px) {
     .grid-2 {
-        grid-template-columns: repeat(2, 1fr);
+      flex-direction: column;
     }
-
-    .section-1 {
-        padding-top: 35vh;
-    }
-
-    .section-2 {
-        padding-top: 18vh;
-    }
-}
+  }
+  
