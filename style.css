@@ -22,13 +22,12 @@ body {
 
 h1{
     color: #0c0000;
-  font-size: 3em;
-  font-weight: 700;
-  text-shadow: 2px 2px rgb(125, 123, 123);
-  background: linear-gradient(to right, #5c5a5a, #393838);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: all 0.3s ease-in-out;
+    font-size: 3em;
+    font-weight: 700;
+    text-shadow: 2px 2px rgb(125, 123, 123);
+    
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
   }
 
 h2,
@@ -84,11 +83,12 @@ a {
 
 .section-2 a {
     display: block;
-    padding: 
-    font-size: 1.2rem;
-    padding-left: 
-    width: 100px;
-    text-align: center;
+    
+    
+    
+    
+
+    
 }
 
 /* animations / utilities */
