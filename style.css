@@ -20,6 +20,15 @@ body {
 
 }
 
+.icon {
+    color: #007bff;
+}
+
+
+
+
+
+
 h1{
     color: #0c0000;
     font-size: 3em;
@@ -40,16 +49,23 @@ a {
     text-decoration: none;
 }
 
+i {
+    color: #007bff;
+}
+
+
 /* section 1 */
 .section-1 {
     padding-top: 12rem;
     text-align: center;
+    
 }
 
 .section-1 p {
     font-size: 1.1rem;
     padding-bottom: 5px;
     margin: 0;
+    
 }
 
 .section-1 h2 {
