@@ -2,42 +2,112 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 .grid-2 {
-    
+
     grid-template-columns: repeat(2, 1fr);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
+
 }
 
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
-    background-color: #101214;
+    font-family: "Source Code Pro", "Menlo", "DejaVu Sans Mono", "Lucida Console", monospace;
+    background-color: rgb(42, 45, 47);
     color: #7A7C80;
 
 }
 
 .icon {
-    color: #007bff;
+    color: #855fef;
 }
 
 
 
 
+#nav-bg {
+    margin: 0;
+    padding: 0.25rem 1rem;
+    font-family: "Source Code Pro", "Menlo", "DejaVu Sans Mono", "Lucida Console", monospace;
+    background: #333;
+    color: #fff;
+}
+
+#top-nav {
+    max-width: 40rem;
+    margin: auto;
+    text-align: center;
+}
+
+#top-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+#top-nav a:hover {
+    color: #000;
+    background-color: #fff;
+}
+
+a#logo {
+    color: #f2deff;
+}
+
+a:hover#logo {
+    color: #000;
+}
+
+#menu-icon {
+    display: none;
+}
+
+.trigger {
+    display: none;
+}
+
+input[type=checkbox]:checked~.trigger {
+    display: block;
+    margin: auto;
+}
+
+.menu-label {
+    font-family: "Source Code Pro", "Menlo", "DejaVu Sans Mono", "Lucida Console", monospace;
+}
+
+input[type=checkbox]~.menu-label:after {
+    content: "(+)";
+}
+
+input[type=checkbox]:checked~.menu-label:after {
+    content: "(-)";
+}
+
+.nav-link {
+    display: block;
+}
+
+.trigger-child {
+    display: inline-block;
+    text-align: initial;
+}
+
+.nav-link:before {
+    content: "- ";
+}
 
 
-h1{
+h1 {
     color: #0c0000;
     font-size: 3em;
     font-weight: 700;
-    text-shadow: 2px 2px rgb(125, 123, 123);
-    
-    color: #949292;
+    text-shadow: 2px 2px rgb(141, 139, 139);
+
+    color: #ffffff;
     transition: all 0.3s ease-in-out;
-  }
+}
 
 h2,
 .white {
@@ -50,7 +120,7 @@ a {
 }
 
 i {
-    color: #007bff;
+    color: #7145ea;
 }
 
 
@@ -58,14 +128,15 @@ i {
 .section-1 {
     padding-top: 12rem;
     text-align: center;
-    
+
 }
 
 .section-1 p {
     font-size: 1.1rem;
     padding-bottom: 5px;
     margin: 0;
-    
+    color: #e3e0e0;
+
 }
 
 .section-1 h2 {
@@ -86,8 +157,10 @@ i {
 }
 
 .section-2 h2 {
-    font-size: 1.7rem;
+    font-size: 2rem;
     margin-bottom: 10px;
+
+
 
 }
 
@@ -95,17 +168,44 @@ i {
     font-size: 1.1rem;
     padding-bottom: 10px;
     text-align: center;
+    color: #e3e0e0;
+    ;
 }
 
 .section-2 a {
     display: block;
-    
-    
-    
-    
+    color: #e3e0e0;
 
-    
 }
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+
+
 
 /* animations / utilities */
 .section-2 a:hover {
@@ -133,15 +233,45 @@ i {
 
 
 footer {
-    background-color: #1a1a1a; /* adding background color */
-    color: #fff; /* text color */
-    padding: 2em; /* padding around the footer content */
-    text-align: center; /* center align the text */
+    background-color: #333;
+    /* adding background color */
+    color: #fff;
+    /* text color */
+    padding: 2em;
+    /* padding around the footer content */
+    text-align: center;
+    /* center align the text */
     font-weight: 700;
-    
-    
-  }
-  
+}
+
+
+@media (min-width: 40rem) {
+    .menu-label {
+        display: none;
+    }
+
+    .trigger {
+        display: inline;
+        padding-top: inherit;
+    }
+
+    .trigger-child {
+        display: inline;
+        text-align: initial;
+    }
+
+    input[type=checkbox]:checked~.trigger {
+        display: inline;
+    }
+
+    .nav-link {
+        display: initial;
+    }
+
+    .nav-link:before {
+        content: "| ";
+    }
+}
 
 
 
@@ -149,9 +279,6 @@ footer {
 
 
 
-
-
-  
 /* media queres */
 /* CSS for very small screens (mobile devices) */
 @media (max-width: 480px) {
@@ -207,7 +334,6 @@ footer {
 
 @media only screen and (max-width: 600px) {
     .grid-2 {
-      flex-direction: column;
+        flex-direction: column;
     }
-  }
-  
+}
