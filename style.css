@@ -1,6 +1,11 @@
 /* global */
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
+.container {
+    max-width: 1200px; /* Set maximum width for the container */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
 .grid-2 {
 
     grid-template-columns: repeat(2, 1fr);
@@ -337,3 +342,4 @@ footer {
         flex-direction: column;
     }
 }
+
