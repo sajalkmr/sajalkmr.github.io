@@ -16,7 +16,7 @@ permissions:
 
 # Allow only one concurrent deployment
 concurrencyGroup: "pages"
-cancelInProgressrue: true
+cancel-in-progress: true
 
 jobs:
   # Build job
@@ -48,9 +48,8 @@ jobs:
       - name: Run Linter
         run: npm run lint
       
-      # Uncomment when you have tests
-      # - name: Run Tests
-      #   run: npm test
+      - name: Run Tests
+        run: npm test
       
       - name: Build Project
         run: npm run build
