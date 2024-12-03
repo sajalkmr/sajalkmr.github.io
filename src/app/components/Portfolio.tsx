@@ -12,7 +12,7 @@ import {
 import { VisitorLog } from './VisitorLog'
 import { VisitorMap } from './VisitorMap'
 import Link from 'next/link'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 
 type Star = {
   x: number;
