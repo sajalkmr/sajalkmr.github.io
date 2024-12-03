@@ -1,0 +1,245 @@
+[33mcommit bc118d18a2af845e4cf022ff836a79c359e3b0d6[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Sun Feb 25 14:22:07 2024 +0530
+
+    new update
+
+A	about.html
+A	education.html
+M	index.html
+A	projects.html
+A	skill.html
+M	style.css
+
+[33mcommit 0468f8c39892ca38b407a0c0627cdd10b75af173[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Fri Sep 29 00:11:30 2023 +0530
+
+    Added CNAME file for custom domain (sajalkmr.me)
+
+A	CNAME
+
+[33mcommit 7a5f891dfc5c9e7a2d69589b270e0de896fb0a5f[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Fri Aug 11 19:17:54 2023 +0530
+
+    changes
+
+M	index.html
+M	style.css
+
+[33mcommit 3a7cb874a645ce6c624002e7c29c2191b41bd6d0[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Fri Apr 14 19:09:29 2023 +0530
+
+    Update index.html
+
+M	index.html
+
+[33mcommit c08957fe0d9f2c82ac527191b8c87ca3994613d0[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Fri Apr 14 18:49:20 2023 +0530
+
+    Update index.html
+
+M	index.html
+
+[33mcommit 7595c4e4527f05329c4322eafa9399365d52eb7c[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Fri Apr 14 18:37:50 2023 +0530
+
+    Update index.html
+
+M	index.html
+
+[33mcommit ace6b403bfbf2bf0762d2e292612413b1ff58918[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Fri Apr 14 01:48:29 2023 +0530
+
+    Update style.css
+
+M	style.css
+
+[33mcommit eb4bde65330610950fe8f9ee3987b00b141f5cb2[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Fri Apr 14 01:42:01 2023 +0530
+
+    Update index.html
+
+M	index.html
+
+[33mcommit e58818c2ebd6735c4b5586f61eca025cfe4e66c7[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Fri Apr 14 01:34:05 2023 +0530
+
+    changes
+
+M	index.html
+M	style.css
+
+[33mcommit ec9cca0afd0ab3f182ffe119d33c45130faf72a2[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Wed Mar 22 18:45:54 2023 +0530
+
+    some changes
+
+M	index.html
+M	style.css
+
+[33mcommit 592382f1189728de5a3502cd8b1870aafa7d0a73[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Mon Jan 30 16:25:48 2023 +0530
+
+    Update style.css
+
+M	style.css
+
+[33mcommit 7700f8c3038afe1acb46fc83b1728c66ae029a64[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Mon Jan 30 16:19:12 2023 +0530
+
+    minor changes
+
+M	index.html
+M	style.css
+
+[33mcommit 7410104749261bf58b08d3247ba181c789c550bb[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Sun Jan 15 15:10:14 2023 +0530
+
+    minor change
+
+M	index.html
+M	style.css
+
+[33mcommit 57dab83d514db66caa446b871d59a618ec94de88[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Sun Jan 15 15:06:43 2023 +0530
+
+    major changes
+
+M	index.html
+M	style.css
+
+[33mcommit 00251083ded2e5d6c45aaf9eb85357b5240c7d25[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Sun Jan 15 01:44:40 2023 +0530
+
+    more icons added
+
+M	index.html
+M	style.css
+
+[33mcommit 4b2e074616232c15ec3cfbf123f265c227f938b7[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Fri Dec 9 18:31:17 2022 +0000
+
+    Add files via upload
+
+A	favicon/favicon.ico
+
+[33mcommit 016128ef7e56ea32076ea3b368138193f7216761[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Fri Dec 9 23:59:53 2022 +0530
+
+    Delete favicon.ico
+
+D	favicon/favicon.ico
+
+[33mcommit 1d2302776311e4bee8d3ce728634c21cdf393468[m
+Merge: 2c58186b 90a787f7
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Fri Dec 9 18:13:10 2022 +0000
+
+    Merge pull request #1 from sajalkmr/sajalkmr-patch-1
+    
+    Update index.html
+
+[33mcommit 90a787f7ee568abaab5abc01335a3959cb888123[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Fri Dec 9 23:42:56 2022 +0530
+
+    Update index.html
+
+M	index.html
+
+[33mcommit 2c58186bcca81d6d4b1fe3988fdf7f4cf972774c[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Fri Dec 9 18:09:59 2022 +0000
+
+    Add files via upload
+
+A	favicon/favicon.ico
+
+[33mcommit da0ac9306f63a58def6c42ebad18cee84f3b6378[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Wed Dec 7 19:26:06 2022 +0530
+
+    Update index.html
+
+M	index.html
+
+[33mcommit b3dfbf59c6decb80cd78aa4773ddf63bda663c82[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Wed Dec 7 04:36:48 2022 +0000
+
+    Update index.html
+
+M	index.html
+
+[33mcommit e6db2078c59b47b10733ea177c4da3cafb0a89d8[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Tue Dec 6 23:27:51 2022 +0530
+
+    Update index.html
+
+M	index.html
+
+[33mcommit 8847aa47fcffb561c24b942ef8d5afea866730c0[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Mon Oct 17 19:40:30 2022 +0530
+
+    added discord
+
+M	index.html
+
+[33mcommit d7d14e7f8c25212ce42d71fb53534eb18382eaf0[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Sun Oct 16 22:54:16 2022 +0530
+
+    Align center
+
+M	style.css
+
+[33mcommit 14bfafd3d673266a86523bb931b64af42f33e865[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Sat Oct 15 21:40:46 2022 +0530
+
+    test
+
+M	README.md
+
+[33mcommit c9184229578b35a33dfa998ec8cb8b598c2f8561[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Sat Oct 15 03:17:41 2022 +0530
+
+    Update index.html
+
+M	index.html
+
+[33mcommit 9cc37dd9c1585634efc6f61d4ff6e9b9dce22051[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Sat Oct 15 03:12:42 2022 +0530
+
+    Add files via upload
+
+A	index.html
+A	style.css
+
+[33mcommit 5d597027eec1e0f5022bf58bf8aeab06821c636f[m
+Author: Sajal <sajal.kumar2003@gmail.com>
+Date:   Sat Oct 15 03:11:27 2022 +0530
+
+    Initial commit
+
+A	README.md
