@@ -7,7 +7,8 @@
     "build": "next build --no-lint",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "next build && touch out/.nojekyll"
+    "deploy": "next build && touch out/.nojekyll",
+    "test": "echo 'No tests configured'"
   },
   "dependencies": {
     "@types/leaflet": "^1.9.14",
