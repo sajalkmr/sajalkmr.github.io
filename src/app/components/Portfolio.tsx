@@ -193,7 +193,7 @@ export default function Portfolio() {
 
                   <p></p>
 
-                  <p>On the lookout for exciting projects, internships. let’s connect! 🚀</p>
+                  <p>On the lookout for exciting projects & internships. let’s connect! 🚀</p>
                 </div>
 
                 <div className="flex items-center justify-center md:justify-start gap-4">
