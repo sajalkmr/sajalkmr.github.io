@@ -523,7 +523,7 @@ export default function Portfolio() {
               </span>
             </div>
             <div className={`text-xs ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}>
-              <span>Last updated: 27/11/2024</span>
+              <span>Last updated: 04/12/2024</span>
             </div>
           </div>
         </div>
