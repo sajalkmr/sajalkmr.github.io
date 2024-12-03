@@ -215,11 +215,11 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section id="projects" className="mb-12 md:mb-20 pt-16">
+      <section id="projects" className="py-12 md:py-8">
         <h2 className={`text-lg md:text-2xl font-bold mb-4 ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`}>Projects</h2>
         <div className="space-y-6">
           <div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
               {twProjects.map((project) => (
                 <div key={project.name} className={`${isDarkMode ? 'bg-gray-800/50' : 'bg-gray-200/50'} rounded-lg p-4 space-y-3`}>
                   <h3 className="text-base md:text-lg font-semibold">{project.name}</h3>
@@ -248,7 +248,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section id="experience" className="mb-12 md:mb-20 pt-16">
+      <section id="experience" className="py-12 md:py-8">
         <h2 className={`text-lg md:text-2xl font-bold mb-4 ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`}>Experience</h2>
         <div className="space-y-8">
           <div className="grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-2">
@@ -296,7 +296,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section id="skills" className="mb-12 md:mb-20 pt-16">
+      <section id="skills" className="py-12 md:py-8">
         <h2 className={`text-lg md:text-2xl font-bold mb-4 ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`}>Skills</h2>
 
         <div className="space-y-6">
@@ -385,7 +385,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section id="certifications" className="mb-12 md:mb-20 pt-16">
+      <section id="certifications" className="py-12 md:py-8">
         <h2 className={`text-lg md:text-2xl font-bold mb-4 ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`}>Certifications</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {certifications.map((cert, index) => (
@@ -426,7 +426,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section id="analytics" className="mb-12 md:mb-20 pt-16">
+      <section id="analytics" className="py-12 md:py-8">
         <h2 className={`text-lg sm:text-xl md:text-2xl font-bold mb-4 ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`}>Visitor Analytics</h2>
         <div className="space-y-8 sm:space-y-12">
           <div className={`${isDarkMode ? 'bg-gray-800/50' : 'bg-gray-200/50'} p-4 sm:p-6 rounded`}>
@@ -440,7 +440,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <footer id="contact" className={`${isDarkMode ? 'border-gray-800' : 'border-gray-200'} mt-12 md:mt-20 pt-16`}>
+      <footer id="contact" className={`${isDarkMode ? 'border-gray-800' : 'border-gray-200'} mt-12 md:mt-16 pt-16`}>
         <div className="mb-12 md:mb-16">
           <h2 className={`text-lg sm:text-xl md:text-2xl font-bold mb-4 ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`}>Contact</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
