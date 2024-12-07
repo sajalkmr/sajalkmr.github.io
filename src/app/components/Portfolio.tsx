@@ -582,7 +582,7 @@ export default function Portfolio() {
 
             <div className="flex items-center space-x-2 sm:space-x-4">
               <a
-                href="/sajal_resume.pdf#view=FitPage"
+                href="https://drive.google.com/file/d/1iqej1qEix-X106yCMyUgS6rrqgZVUhx1/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`flex items-center space-x-1 px-3 py-1.5 rounded-lg transition-colors duration-200 ${isDarkMode
@@ -591,7 +591,7 @@ export default function Portfolio() {
                   }`}
                 onClick={(e) => {
                   e.preventDefault();
-                  window.open('/sajal_resume.pdf#view=FitPage', '_blank', 'noopener,noreferrer');
+                  window.open('https://drive.google.com/file/d/1iqej1qEix-X106yCMyUgS6rrqgZVUhx1/view?usp=sharing', '_blank', 'noopener,noreferrer');
                 }}
               >
                 <FileText className="w-4 h-4" />
