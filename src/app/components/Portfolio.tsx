@@ -41,7 +41,7 @@ export default function Portfolio() {
       logo: 'https://download.logo.wine/logo/Amazon_Web_Services/Amazon_Web_Services-Logo.wine.png',
       issuer: 'Coursera',
       date: '2024',
-      link: 'https://www.credly.com/'
+      link: 'https://coursera.org/share/2d2d04c0cfca0b2edd632d68e88a6957'
     },
     {
       name: 'Network Automation Professional Certificate',
