@@ -11,8 +11,53 @@ import {
 } from 'lucide-react'
 import { VisitorLog } from './VisitorLog'
 import { VisitorMap } from './VisitorMap'
+
 import Link from 'next/link'
-import Image from "next/legacy/image"
+import Image from "next/image"
+
+export const SKILLS = [
+  { category: 'Languages', icon: Code, items: ['C/C++', 'Java', 'Go', 'Python', 'PowerShell', 'Bash', 'JavaScript', 'HTML/CSS', 'SQL', 'LATEX'] },
+  { category: 'Frameworks & Libraries', icon: Zap, items: ['React', 'Node.js', 'Express'] },
+  { category: 'Developer Tools', icon: Brain, items: ['Unix', 'Linux/WSL', 'Windows', 'Docker', 'Kubernetes', 'Terraform', 'Git/GitHub', 'Firebase', 'Jenkins', 'Postman'] },
+  { category: 'Core Skills', icon: Atom, items: ['Data Structures', 'Algorithms', 'Distributed Systems', 'Operating Systems', 'Computer Networks'] }
+]
+
+export const CERTIFICATIONS = [
+  {
+    name: 'AWS Cloud Practitioner Essentials',
+    logo: 'https://download.logo.wine/logo/Amazon_Web_Services/Amazon_Web_Services-Logo.wine.png',
+    issuer: 'Coursera',
+    date: '2024',
+    link: 'https://coursera.org/share/2d2d04c0cfca0b2edd632d68e88a6957'
+  },
+  {
+    name: 'Network Automation Professional Certificate',
+    logo: 'https://miro.co.za/img/m/46-large_brand.webp',
+    issuer: 'Arista Networks',
+    date: '2024',
+    link: 'https://www.linkedin.com/learning/certificates/9bdc6a9f2e00ace906b135ba38534b9f93c5c18790e10206ac7092795a2529b7?trk=share_certificate'
+  },
+  {
+    name: 'DevOps Professional Certificate',
+    logo: 'https://cdn.icon-icons.com/icons2/2699/PNG/512/pagerduty_logo_icon_169875.png',
+    issuer: 'Pagerduty',
+    date: '2023',
+    link: 'https://www.linkedin.com/learning/certificates/e3c205c516875f02ab58b3f06b9dd501360f1526036b0936c2dd195c7353c3c5?trk=share_certificate'
+  }
+]
+
+export const TW_PROJECTS = [
+  {
+    name: 'ordo',
+    description: 'A distributed container orchestration system built with Go, featuring custom PVM scheduler and RESTful APIs for cluster management.',
+    tech: ['Go', 'Docker SDK', 'BoltDB']
+  },
+  {
+    name: 'raftly',
+    description: 'Implementation of Raft Consensus Algorithm in Java with monitoring using Prometheus and Grafana.',
+    tech: ['Java', 'Maven', 'Prometheus', 'Grafana']
+  }
+];
 
 type Star = {
   x: number;
@@ -27,52 +72,8 @@ export default function Portfolio() {
   const [mounted, setMounted] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  // Track which section is currently in view for nav highlight
   const [activeSection, setActiveSection] = useState<string>('about')
 
-  const skills = [
-    { category: 'Languages', icon: Code, items: ['C/C++', 'Java', 'Go', 'Python', 'PowerShell', 'Bash', 'JavaScript', 'HTML/CSS', 'SQL', 'LATEX'] },
-    { category: 'Frameworks & Libraries', icon: Zap, items: ['React', 'Node.js', 'Express'] },
-    { category: 'Developer Tools', icon: Brain, items: ['Unix', 'Linux/WSL', 'Windows', 'Docker', 'Kubernetes', 'Terraform', 'Git/GitHub', 'Firebase', 'Jenkins', 'Postman'] },
-    { category: 'Core Skills', icon: Atom, items: ['Data Structures', 'Algorithms', 'Distributed Systems', 'Operating Systems', 'Computer Networks'] }
-  ]
-
-  const certifications = [
-    {
-      name: 'AWS Cloud Practitioner Essentials',
-      logo: 'https://download.logo.wine/logo/Amazon_Web_Services/Amazon_Web_Services-Logo.wine.png',
-      issuer: 'Coursera',
-      date: '2024',
-      link: 'https://coursera.org/share/2d2d04c0cfca0b2edd632d68e88a6957'
-    },
-    {
-      name: 'Network Automation Professional Certificate',
-      logo: 'https://miro.co.za/img/m/46-large_brand.webp',
-      issuer: 'Arista Networks',
-      date: '2024',
-      link: 'https://www.linkedin.com/learning/certificates/9bdc6a9f2e00ace906b135ba38534b9f93c5c18790e10206ac7092795a2529b7?trk=share_certificate'
-    },
-    {
-      name: 'DevOps Professional Certificate',
-      logo: 'https://cdn.icon-icons.com/icons2/2699/PNG/512/pagerduty_logo_icon_169875.png',
-      issuer: 'Pagerduty',
-      date: '2023',
-      link: 'https://www.linkedin.com/learning/certificates/e3c205c516875f02ab58b3f06b9dd501360f1526036b0936c2dd195c7353c3c5?trk=share_certificate'
-    }
-  ]
-
-  const twProjects = [
-    {
-      name: 'ordo',
-      description: 'A distributed container orchestration system built with Go, featuring custom PVM scheduler and RESTful APIs for cluster management.',
-      tech: ['Go', 'Docker SDK', 'BoltDB']
-    },
-    {
-      name: 'raftly',
-      description: 'Implementation of Raft Consensus Algorithm in Java with monitoring using Prometheus and Grafana.',
-      tech: ['Java', 'Maven', 'Prometheus', 'Grafana']
-    }
-  ];
 
   useEffect(() => {
     setMounted(true)
@@ -101,12 +102,10 @@ export default function Portfolio() {
       })
     }
 
-    // Cap rendering to 30 FPS & skip entirely on small screens
     let lastFrame = 0
     const fpsInterval = 1000 / 30
 
     const animate = (time: number) => {
-      // Disable canvas under md breakpoint to save resources
       if (window.innerWidth < 768) {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         requestAnimationFrame(animate)
@@ -162,7 +161,6 @@ export default function Portfolio() {
       requestAnimationFrame(animate)
     }
 
-    // kick-off throttled animation loop
     requestAnimationFrame(animate)
 
     const handleResize = () => {
@@ -174,7 +172,6 @@ export default function Portfolio() {
     return () => window.removeEventListener('resize', handleResize)
   }, [isDarkMode, mounted])
 
-  // Observe sections to update active nav link
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -204,9 +201,9 @@ export default function Portfolio() {
                 <Image
                   src="/profile.png"
                   alt="Sajal Kumar"
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-full"
+                  fill
+                  sizes="(max-width: 768px) 184px, 256px"
+                  className="rounded-full object-cover"
                   priority
                 />
               </div>
@@ -237,7 +234,6 @@ export default function Portfolio() {
                 </div>
 
                 <div className="flex items-center justify-center md:justify-start gap-4">
-                  {/* Telegram */}
                   <a
                     href="https://t.me/sajalkmr"
                     target="_blank"
@@ -250,7 +246,6 @@ export default function Portfolio() {
                     Contact Me
                   </a>
 
-                  {/* Email fallback */}
                   <a
                     href="mailto:sajalkmr@proton.me"
                     className={`${isDarkMode ? 'bg-gray-700 hover:bg-gray-600 text-gray-100' : 'bg-gray-300 hover:bg-gray-400 text-gray-900'} px-4 py-1 rounded-md text-sm transition-colors duration-200 flex items-center gap-2`}
@@ -270,7 +265,7 @@ export default function Portfolio() {
         <div className="space-y-6">
           <div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
-              {twProjects.map((project) => (
+              {TW_PROJECTS.map((project) => (
                 <div key={project.name} className={`${isDarkMode ? 'bg-gray-800/50' : 'bg-gray-200/50'} rounded-lg p-4 space-y-3`}>
                   <h3 className="text-base md:text-lg font-semibold">{project.name}</h3>
                   <p className={`text-sm md:text-base ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>{project.description}</p>
@@ -438,7 +433,7 @@ export default function Portfolio() {
       <section id="certifications" className="py-12 md:py-8">
         <h2 className={`text-lg md:text-2xl font-bold mb-4 ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`}>Certifications</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {certifications.map((cert, index) => (
+          {CERTIFICATIONS.map((cert, index) => (
             <div
               key={index}
               className={`p-4 rounded-lg ${isDarkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-gray-100 hover:bg-gray-200'

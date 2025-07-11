@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import dynamic from 'next/dynamic';
 import { LoadingSpinner } from './LoadingSpinner';
@@ -26,6 +26,8 @@ interface VisitorMapProps {
 }
 
 export const VisitorMap: React.FC<VisitorMapProps> = ({ isDarkMode }) => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [inView, setInView] = useState(false);
   const mapStyle = isDarkMode 
     ? 'mapbox://styles/mapbox/dark-v11'
     : 'mapbox://styles/mapbox/light-v11';
@@ -33,6 +35,25 @@ export const VisitorMap: React.FC<VisitorMapProps> = ({ isDarkMode }) => {
   const [visitorLocations, setVisitorLocations] = useState<VisitorLocation[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '0px 0px -100px 0px', threshold: 0.1 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const getVisitorLocation = async () => {
@@ -125,7 +146,7 @@ export const VisitorMap: React.FC<VisitorMapProps> = ({ isDarkMode }) => {
     getVisitorLocation();
   }, []);
 
-  if (loading) {
+  if (inView && loading) {
     return (
       <div className="container mx-auto px-4 max-w-5xl">
         <div className="h-[500px] md:h-[600px] bg-gray-800 rounded-lg flex items-center justify-center shadow-lg">
@@ -138,7 +159,7 @@ export const VisitorMap: React.FC<VisitorMapProps> = ({ isDarkMode }) => {
     );
   }
 
-  if (error) {
+  if (inView && error) {
     return (
       <div className="container mx-auto px-4 max-w-5xl">
         <div className="h-[500px] md:h-[600px] bg-gray-800 rounded-lg flex items-center justify-center shadow-lg">
@@ -151,9 +172,15 @@ export const VisitorMap: React.FC<VisitorMapProps> = ({ isDarkMode }) => {
   }
 
   return (
-    <div className="container mx-auto px-4 max-w-5xl">
+    <div ref={containerRef} className="container mx-auto px-4 max-w-5xl">
       <div className="h-[500px] md:h-[600px] bg-gray-800 rounded-lg overflow-hidden shadow-lg">
-        <ClientMap locations={visitorLocations} isDarkMode={isDarkMode} />
+        {inView ? (
+          <ClientMap locations={visitorLocations} isDarkMode={isDarkMode} />
+        ) : (
+          <div className="flex items-center justify-center h-full">
+            <LoadingSpinner size="lg" />
+          </div>
+        )}
       </div>
     </div>
   );
