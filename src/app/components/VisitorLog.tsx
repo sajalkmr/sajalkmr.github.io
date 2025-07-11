@@ -115,8 +115,11 @@ export const VisitorLog: React.FC<VisitorLogProps> = ({ isDarkMode }) => {
   };
 
   return (
-    <div className={`space-y-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-      <div className="hidden sm:grid sm:grid-cols-7 gap-4 text-sm text-gray-500 px-4 py-2">
+    <div
+      className={`space-y-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}
+      aria-live="polite"
+    >
+      <div className="hidden sm:grid sm:grid-cols-7 gap-4 text-sm text-gray-300 px-4 py-2">
         <div>IP</div>
         <div>Country</div>
         <div>City</div>
@@ -141,23 +144,23 @@ export const VisitorLog: React.FC<VisitorLogProps> = ({ isDarkMode }) => {
             </div>
             <div className="grid grid-cols-2 gap-2 text-xs">
               <div>
-                <span className={`${isDarkMode ? 'text-gray-500' : 'text-gray-600'}`}>IP: </span>
+                <span className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>IP: </span>
                 <span className={`${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>{visitor.ip}</span>
               </div>
               <div>
-                <span className={`${isDarkMode ? 'text-gray-500' : 'text-gray-600'}`}>City: </span>
+                <span className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>City: </span>
                 <span className={`${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>{visitor.city}</span>
               </div>
               <div>
-                <span className={`${isDarkMode ? 'text-gray-500' : 'text-gray-600'}`}>OS: </span>
+                <span className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>OS: </span>
                 <span className={`${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>{visitor.os || 'Unknown'}</span>
               </div>
               <div>
-                <span className={`${isDarkMode ? 'text-gray-500' : 'text-gray-600'}`}>Browser: </span>
+                <span className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Browser: </span>
                 <span className={`${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>{visitor.browser || 'Unknown'}</span>
               </div>
               <div className="col-span-2">
-                <span className={`${isDarkMode ? 'text-gray-500' : 'text-gray-600'}`}>Region: </span>
+                <span className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Region: </span>
                 <span className={`${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>{visitor.region}</span>
               </div>
             </div>

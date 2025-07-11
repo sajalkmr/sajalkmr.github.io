@@ -28,7 +28,33 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          id="theme-init-inline"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                try {
+                  var persisted = localStorage.getItem('theme');
+                  var hasPersistedPreference = typeof persisted === 'string';
+                  var theme = 'dark';
+                  if (hasPersistedPreference) {
+                    theme = persisted;
+                  } else {
+                    var mql = window.matchMedia('(prefers-color-scheme: dark)');
+                    theme = mql.matches ? 'dark' : 'light';
+                  }
+                  document.documentElement.classList.add(theme);
+                  document.documentElement.classList.remove(theme === 'dark' ? 'light' : 'dark');
+                } catch (e) {
+                  console.error(e);
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

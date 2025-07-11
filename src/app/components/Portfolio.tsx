@@ -27,6 +27,8 @@ export default function Portfolio() {
   const [mounted, setMounted] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  // Track which section is currently in view for nav highlight
+  const [activeSection, setActiveSection] = useState<string>('about')
 
   const skills = [
     { category: 'Languages', icon: Code, items: ['C/C++', 'Java', 'Go', 'Python', 'PowerShell', 'Bash', 'JavaScript', 'HTML/CSS', 'SQL', 'LATEX'] },
@@ -99,7 +101,24 @@ export default function Portfolio() {
       })
     }
 
-    const animate = () => {
+    // Cap rendering to 30 FPS & skip entirely on small screens
+    let lastFrame = 0
+    const fpsInterval = 1000 / 30
+
+    const animate = (time: number) => {
+      // Disable canvas under md breakpoint to save resources
+      if (window.innerWidth < 768) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        requestAnimationFrame(animate)
+        return
+      }
+
+      if (time - lastFrame < fpsInterval) {
+        requestAnimationFrame(animate)
+        return
+      }
+      lastFrame = time
+
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       ctx.fillStyle = isDarkMode ? 'rgba(17, 24, 39, 0.9)' : 'rgba(243, 244, 246, 0.95)'
       ctx.fillRect(0, 0, canvas.width, canvas.height)
@@ -143,7 +162,8 @@ export default function Portfolio() {
       requestAnimationFrame(animate)
     }
 
-    animate()
+    // kick-off throttled animation loop
+    requestAnimationFrame(animate)
 
     const handleResize = () => {
       canvas.width = window.innerWidth
@@ -153,6 +173,26 @@ export default function Portfolio() {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [isDarkMode, mounted])
+
+  // Observe sections to update active nav link
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id')
+            if (id) setActiveSection(id)
+          }
+        })
+      },
+      { rootMargin: '-50% 0px -50% 0px' }
+    )
+
+    const sections = document.querySelectorAll<HTMLElement>('section[id]')
+    sections.forEach((section) => observer.observe(section))
+
+    return () => sections.forEach((section) => observer.unobserve(section))
+  }, [])
 
   const renderHome = () => (
     <>
@@ -182,13 +222,13 @@ export default function Portfolio() {
                   <br />
                   <br />
                 </p>
-                <p className={`text-xs md:text-base mt-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                <p className={`text-xs md:text-base mt-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                   Bengaluru, India
                 </p>
               </div>
 
               <div className="space-y-6">
-                <div className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'} text-sm md:text-base space-y-4`}>
+                <div className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'} text-sm md:text-base space-y-4`}>
                   <p>👋 Hi there! I’m a third-year Information Science Engineering student who’s passionate about distributed systems, cybersecurity, and, of course, sharing the perfect meme at just the right time..</p>
 
                   <p></p>
@@ -197,6 +237,7 @@ export default function Portfolio() {
                 </div>
 
                 <div className="flex items-center justify-center md:justify-start gap-4">
+                  {/* Telegram */}
                   <a
                     href="https://t.me/sajalkmr"
                     target="_blank"
@@ -207,6 +248,15 @@ export default function Portfolio() {
                       <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
                     </svg>
                     Contact Me
+                  </a>
+
+                  {/* Email fallback */}
+                  <a
+                    href="mailto:sajalkmr@proton.me"
+                    className={`${isDarkMode ? 'bg-gray-700 hover:bg-gray-600 text-gray-100' : 'bg-gray-300 hover:bg-gray-400 text-gray-900'} px-4 py-1 rounded-md text-sm transition-colors duration-200 flex items-center gap-2`}
+                  >
+                    <Mail className="w-4 h-4" />
+                    Email Me
                   </a>
                 </div>
               </div>
@@ -223,7 +273,7 @@ export default function Portfolio() {
               {twProjects.map((project) => (
                 <div key={project.name} className={`${isDarkMode ? 'bg-gray-800/50' : 'bg-gray-200/50'} rounded-lg p-4 space-y-3`}>
                   <h3 className="text-base md:text-lg font-semibold">{project.name}</h3>
-                  <p className={`text-sm md:text-base ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{project.description}</p>
+                  <p className={`text-sm md:text-base ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>{project.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
                       <span key={tech} className={`text-xs px-2 py-1 rounded ${isDarkMode ? 'bg-gray-700' : 'bg-gray-300'}`}>{tech}</span>
@@ -264,7 +314,7 @@ export default function Portfolio() {
                 <span className="text-gray-400">•</span>
                 <span>CMR Institute of Technology</span>
               </div>
-              <ul className={`list-disc list-inside text-sm md:text-base ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} space-y-1`}>
+              <ul className={`list-disc list-inside text-sm md:text-base ${isDarkMode ? 'text-gray-300' : 'text-gray-600'} space-y-1`}>
                 <li>Developed STRbook to digitize student transformation records, reducing manual data entry by 80%</li>
                 <li>Implemented JWT authentication system ensuring secure access for students and teachers</li>
                 <li>Designed RESTful APIs for CRUD operations and integrated PostgreSQL database</li>
@@ -286,7 +336,7 @@ export default function Portfolio() {
                 <span className="text-gray-400">•</span>
                 <span>Google Developer Student Club</span>
               </div>
-              <ul className={`list-disc list-inside text-sm md:text-base ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} space-y-1`}>
+              <ul className={`list-disc list-inside text-sm md:text-base ${isDarkMode ? 'text-gray-300' : 'text-gray-600'} space-y-1`}>
                 <li>Contributed to club website development using React, Golang, and Firebase</li>
                 <li>Improved uptime and reliability of web services in club's technical projects</li>
                 <li>Conducted technical events on Golang and Web Security</li>
@@ -471,7 +521,7 @@ export default function Portfolio() {
               },
               {
                 href: "https://t.me/sajalkmr",
-                icon: <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                icon: <svg viewBox="0 0 24 24" fill="currentColor" role="img" aria-label="Telegram logo" className="w-4 h-4">
                   <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
                 </svg>,
                 label: "Telegram",
@@ -509,7 +559,7 @@ export default function Portfolio() {
               <span className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                 {new Date().getFullYear()} sajal kumar
               </span>
-              <span className={`hidden sm:inline-block ${isDarkMode ? 'text-gray-600' : 'text-gray-400'}`}>•</span>
+              <span className={`hidden sm:inline-block ${isDarkMode ? 'text-gray-400' : 'text-gray-400'}`}>•</span>
               <span className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                 source code{' '}
                 <a
@@ -522,7 +572,7 @@ export default function Portfolio() {
                 </a>
               </span>
             </div>
-            <div className={`text-xs ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}>
+            <div className={`text-xs ${isDarkMode ? 'text-gray-300' : 'text-gray-400'}`}>
               <span>Last updated: 04/12/2024</span>
             </div>
           </div>
@@ -534,7 +584,7 @@ export default function Portfolio() {
   return (
     <>
       <div className="fixed inset-0 w-full h-full">
-        <canvas ref={canvasRef} className="w-full h-full" />
+        <canvas ref={canvasRef} className="w-full h-full hidden md:block" />
       </div>
 
       <header className={`fixed top-0 left-0 right-0 z-50 ${isDarkMode
@@ -570,10 +620,9 @@ export default function Portfolio() {
                 <a
                   key={name}
                   href={path}
-                  className={`text-sm ${isDarkMode
-                    ? 'text-gray-300 hover:text-yellow-500'
-                    : 'text-gray-600 hover:text-blue-700'
-                    } transition-colors`}
+                  className={`text-sm transition-colors ${activeSection === name
+                    ? (isDarkMode ? 'text-yellow-500 font-semibold' : 'text-blue-700 font-semibold')
+                    : (isDarkMode ? 'text-gray-300 hover:text-yellow-500' : 'text-gray-600 hover:text-blue-700')}`}
                 >
                   {name.charAt(0).toUpperCase() + name.slice(1)}
                 </a>
@@ -600,6 +649,7 @@ export default function Portfolio() {
 
               <button
                 onClick={() => toggleTheme()}
+                aria-label={isDarkMode ? 'Switch to light theme' : 'Switch to dark theme'}
                 className={`p-2 rounded-lg transition-colors duration-200 ${isDarkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-gray-200 hover:bg-gray-300'
                   }`}
               >
@@ -645,9 +695,9 @@ export default function Portfolio() {
                   <a
                     key={name}
                     href={path}
-                    className={`text-sm px-3 py-2 rounded-lg ${isDarkMode
-                      ? 'hover:bg-gray-800/50 text-gray-300 hover:text-yellow-500'
-                      : 'hover:bg-gray-200/50 text-gray-600 hover:text-blue-700'
+                    className={`text-sm px-3 py-2 rounded-lg ${activeSection === name
+                      ? (isDarkMode ? 'bg-gray-800/60 text-yellow-500' : 'bg-gray-200 text-blue-700')
+                      : (isDarkMode ? 'hover:bg-gray-800/50 text-gray-300 hover:text-yellow-500' : 'hover:bg-gray-200/50 text-gray-600 hover:text-blue-700')
                       } transition-colors`}
                     onClick={() => setIsMenuOpen(false)}
                   >

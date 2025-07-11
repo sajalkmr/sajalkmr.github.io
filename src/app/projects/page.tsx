@@ -133,7 +133,7 @@ export default function Projects() {
 
               <ul className="list-disc list-inside space-y-2 pl-4">
                 {project.details.map((detail, index) => (
-                  <li key={index} className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                  <li key={index} className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                     {detail}
                   </li>
                 ))}

@@ -1,6 +1,17 @@
 @import "tailwindcss";
 @config "../../tailwind.config.ts";
 
+html.light {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+html.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+/* Preserve existing prefers-color-scheme as fallback */
 :root {
   --background: #ffffff;
   --foreground: #171717;
