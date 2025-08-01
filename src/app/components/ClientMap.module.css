@@ -33,6 +33,20 @@
   border: none !important;
 }
 
+/* Regular marker styles */
+.regularIcon {
+  background: none !important;
+  border: none !important;
+}
+
+.regularDot {
+  background-color: #3b82f6;
+  border: 2px solid #1e40af;
+  border-radius: 50%;
+  position: relative;
+  opacity: 0.8;
+}
+
 .pulse {
   background-color: #eab308;
   border-radius: 50%;

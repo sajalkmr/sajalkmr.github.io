@@ -8,18 +8,21 @@ import { VisitorLocation } from '../types/visitor';
 
 interface ClientMapProps {
   locations: VisitorLocation[];
+  currentVisitorLocation?: VisitorLocation;
   isDarkMode: boolean;
 }
 
-export const ClientMap: React.FC<ClientMapProps> = ({ locations, isDarkMode }) => {
+export const ClientMap: React.FC<ClientMapProps> = ({ locations, currentVisitorLocation, isDarkMode }) => {
   const mapRef = useRef<L.Map | null>(null);
   const [currentLocation, setCurrentLocation] = useState<[number, number]>([20, 0]);
 
   useEffect(() => {
-    if (locations.length > 0) {
+    if (currentVisitorLocation) {
+      setCurrentLocation([currentVisitorLocation.lat, currentVisitorLocation.lon]);
+    } else if (locations.length > 0) {
       setCurrentLocation([locations[0].lat, locations[0].lon]);
     }
-  }, [locations]);
+  }, [locations, currentVisitorLocation]);
 
   useEffect(() => {
     if (!mapRef.current) {
@@ -32,12 +35,12 @@ export const ClientMap: React.FC<ClientMapProps> = ({ locations, isDarkMode }) =
         attributionControl: false
       });
 
-      L.tileLayer(isDarkMode 
+      L.tileLayer(isDarkMode
         ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-        : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', 
-      {
-        attribution: 'OpenStreetMap, CartoDB'
-      }).addTo(mapRef.current);
+        : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+        {
+          attribution: 'OpenStreetMap, CartoDB'
+        }).addTo(mapRef.current);
 
       L.control.attribution({
         position: 'bottomright'
@@ -48,13 +51,13 @@ export const ClientMap: React.FC<ClientMapProps> = ({ locations, isDarkMode }) =
           layer.remove();
         }
       });
-      
-      L.tileLayer(isDarkMode 
+
+      L.tileLayer(isDarkMode
         ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-        : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', 
-      {
-        attribution: 'OpenStreetMap, CartoDB'
-      }).addTo(mapRef.current);
+        : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+        {
+          attribution: 'OpenStreetMap, CartoDB'
+        }).addTo(mapRef.current);
 
       mapRef.current.setView(currentLocation, window.innerWidth < 768 ? 1 : 2);
     }
@@ -67,30 +70,76 @@ export const ClientMap: React.FC<ClientMapProps> = ({ locations, isDarkMode }) =
       });
     }
 
+    // Add regular visitor location markers
     locations?.forEach((location: VisitorLocation) => {
-      const size = Math.min(10 + location.count * 2, 25);
-      
-      const pulsingIcon = L.divIcon({
+      const isCurrentVisitor = currentVisitorLocation &&
+        Math.abs(location.lat - currentVisitorLocation.lat) < 0.01 &&
+        Math.abs(location.lon - currentVisitorLocation.lon) < 0.01;
+
+      if (!isCurrentVisitor) {
+        const size = Math.min(8 + location.count * 1.5, 20);
+
+        const regularIcon = L.divIcon({
+          className: styles.regularIcon,
+          html: `<div class="${styles.regularDot}" style="width: ${size}px; height: ${size}px;"></div>`,
+          iconSize: [size, size],
+        });
+
+        const marker = L.marker([location.lat, location.lon], {
+          icon: regularIcon
+        }).addTo(mapRef.current!);
+
+        const locationDisplay = location.city
+          ? `${location.city}, ${location.country}`
+          : location.country;
+
+        const popupContent = `
+          <div class="${styles.customPopup}">
+            <span class="${styles.country}">${locationDisplay}</span>
+            <span class="${styles.visits}">${location.count} visit${location.count > 1 ? 's' : ''}</span>
+          </div>
+        `;
+
+        marker.bindPopup(popupContent, {
+          className: styles.customPopupContainer
+        });
+      }
+    });
+
+    // Add current visitor marker (bigger and pulsing)
+    if (currentVisitorLocation) {
+      const currentVisitorData = locations.find(loc =>
+        Math.abs(loc.lat - currentVisitorLocation.lat) < 0.01 &&
+        Math.abs(loc.lon - currentVisitorLocation.lon) < 0.01
+      ) || currentVisitorLocation;
+
+      const size = Math.min(12 + currentVisitorData.count * 1, 18);
+
+      const currentVisitorIcon = L.divIcon({
         className: styles.pulsingIcon,
         html: `<div class="${styles.pulse}" style="width: ${size}px; height: ${size}px;"></div>`,
         iconSize: [size, size],
       });
 
-      const marker = L.marker([location.lat, location.lon], {
-        icon: pulsingIcon
+      const currentMarker = L.marker([currentVisitorLocation.lat, currentVisitorLocation.lon], {
+        icon: currentVisitorIcon
       }).addTo(mapRef.current!);
+
+      const currentLocationDisplay = currentVisitorLocation.city
+        ? `${currentVisitorLocation.city}, ${currentVisitorLocation.country}`
+        : currentVisitorLocation.country;
 
       const popupContent = `
         <div class="${styles.customPopup}">
-          <span class="${styles.country}">${location.country}</span>
-          <span class="${styles.visits}">${location.count} visit${location.count > 1 ? 's' : ''}</span>
+          <span class="${styles.country}">${currentLocationDisplay} (You are here)</span>
+          <span class="${styles.visits}">${currentVisitorData.count} visit${currentVisitorData.count > 1 ? 's' : ''}</span>
         </div>
       `;
 
-      marker.bindPopup(popupContent, {
+      currentMarker.bindPopup(popupContent, {
         className: styles.customPopupContainer
       });
-    });
+    }
 
     return () => {
       if (mapRef.current) {
@@ -98,7 +147,7 @@ export const ClientMap: React.FC<ClientMapProps> = ({ locations, isDarkMode }) =
         mapRef.current = null;
       }
     };
-  }, [locations, isDarkMode, currentLocation]);
+  }, [locations, currentVisitorLocation, isDarkMode, currentLocation]);
 
   useEffect(() => {
     const handleResize = () => {

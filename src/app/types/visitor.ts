@@ -1,5 +1,6 @@
 export interface VisitorLocation {
   country: string;
+  city?: string;
   lat: number;
   lon: number;
   count: number;
