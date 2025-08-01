@@ -19,10 +19,11 @@ import Link from 'next/link'
 import Image from "next/image"
 
 export const SKILLS = [
-  { category: 'Languages', icon: Code, items: ['C/C++', 'Java', 'Go', 'Python', 'PowerShell', 'Bash', 'JavaScript', 'HTML/CSS', 'SQL', 'LATEX'] },
-  { category: 'Frameworks & Libraries', icon: Zap, items: ['React', 'Node.js', 'Express'] },
-  { category: 'Developer Tools', icon: Brain, items: ['Unix', 'Linux/WSL', 'Windows', 'Docker', 'Kubernetes', 'Terraform', 'Git/GitHub', 'Firebase', 'Jenkins', 'Postman'] },
-  { category: 'Core Skills', icon: Atom, items: ['Data Structures', 'Algorithms', 'Distributed Systems', 'Operating Systems', 'Computer Networks'] }
+  { category: 'Languages', icon: Code, items: ['C/C++', 'Java', 'Python', 'JavaScript', 'Go', 'SQL', 'HTML', 'CSS'] },
+  { category: 'Frameworks & Libraries', icon: Zap, items: ['React', 'Node.js', 'Express.js'] },
+  { category: 'Developer Tools & Technologies', icon: Brain, items: ['Linux/WSL', 'Docker', 'Kubernetes', 'Jenkins', 'Git/GitHub', 'Azure'] },
+  { category: 'Data & Visualization Tools', icon: Database, items: ['Tableau', 'Power BI', 'Excel', 'LaTeX'] },
+  { category: 'Databases', icon: Database, items: ['PostgreSQL', 'MongoDB', 'SQLite'] }
 ]
 
 export const CERTIFICATIONS = [
@@ -51,14 +52,16 @@ export const CERTIFICATIONS = [
 
 export const TW_PROJECTS = [
   {
-    name: 'ordo',
-    description: 'A distributed container orchestration system built with Go, featuring custom PVM scheduler and RESTful APIs for cluster management.',
-    tech: ['Go', 'Docker SDK', 'BoltDB']
+    name: 'BackDash',
+    description: 'Full-stack quantitative backtesting platform with React/TypeScript frontend and Python/FastAPI backend, featuring real-time OKX market data integration and 10+ technical indicators.',
+    tech: ['React', 'TypeScript', 'FastAPI', 'Python', 'OKX API'],
+    github: 'https://github.com/sajalkmr/backdash'
   },
   {
-    name: 'raftly',
-    description: 'Implementation of Raft Consensus Algorithm in Java with monitoring using Prometheus and Grafana.',
-    tech: ['Java', 'Maven', 'Prometheus', 'Grafana']
+    name: 'LLM-based Cyber Threat Intelligence',
+    description: 'AI-driven network traffic analysis system using LLMs and ChromaDB for automated threat detection and classification from PCAP logs with 75% accuracy.',
+    tech: ['Python', 'LangChain', 'ChromaDB', 'Streamlit'],
+    github: 'https://github.com/sajalkmr/LLM-network-analysis'
   }
 ];
 
@@ -230,7 +233,7 @@ export default function Portfolio() {
 
               <div className="space-y-6">
                 <div className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'} text-sm md:text-base space-y-4`}>
-                  <p>👋 Hi there! I’m a third-year Information Science Engineering student who’s passionate about distributed systems, cybersecurity, and, of course, sharing the perfect meme at just the right time..</p>
+                  <p>👋 Hi there! I’m a final-year Information Science Engineering student who’s passionate about distributed systems, cybersecurity, and, of course, sharing the perfect meme at just the right time..</p>
 
 
 
@@ -271,7 +274,24 @@ export default function Portfolio() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
               {TW_PROJECTS.map((project) => (
                 <div key={project.name} className={`${isDarkMode ? 'bg-gray-800/50' : 'bg-gray-200/50'} rounded-lg p-4 space-y-3`}>
-                  <h3 className="text-base md:text-lg font-semibold">{project.name}</h3>
+                  <div className="flex justify-between items-start">
+                    <h3 className="text-base md:text-lg font-semibold">{project.name}</h3>
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`p-1.5 rounded-lg transition-colors duration-200 ${
+                          isDarkMode 
+                            ? 'hover:bg-gray-700/50 text-gray-400 hover:text-gray-200' 
+                            : 'hover:bg-gray-300/50 text-gray-600 hover:text-gray-800'
+                        }`}
+                        aria-label={`View ${project.name} on GitHub`}
+                      >
+                        <Github className="w-4 h-4" />
+                      </a>
+                    )}
+                  </div>
                   <p className={`text-sm md:text-base ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>{project.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
@@ -297,53 +317,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section id="experience" className="py-8 sm:py-10 md:py-12">
-        <h2 className={`text-xl sm:text-2xl md:text-3xl font-bold mb-6 ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`}>Experience</h2>
-        <div className="space-y-8">
-          <div className="grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-2">
-            <div className="flex items-center space-x-2">
-              <Hourglass className={`w-4 h-4 md:w-5 md:h-5 flex-shrink-0 ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`} />
-              <span className={`text-sm md:text-base font-medium ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`}>
-                May 2024 - Present
-              </span>
-            </div>
-            <div className="space-y-2">
-              <div className="flex flex-wrap items-center gap-2 text-sm md:text-base">
-                <span className="font-semibold">Student Developer</span>
-                <span className="text-gray-400">•</span>
-                <span>CMR Institute of Technology</span>
-              </div>
-              <ul className={`list-disc list-inside text-sm md:text-base ${isDarkMode ? 'text-gray-300' : 'text-gray-600'} space-y-1`}>
-                <li>Developed STRbook to digitize student transformation records, reducing manual data entry by 80%</li>
-                <li>Implemented JWT authentication system ensuring secure access for students and teachers</li>
-                <li>Designed RESTful APIs for CRUD operations and integrated PostgreSQL database</li>
-                <li>Automated CI/CD pipelines using Jenkins for smooth deployment</li>
-              </ul>
-            </div>
-          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-2">
-            <div className="flex items-center space-x-2">
-              <Hourglass className={`w-4 h-4 md:w-5 md:h-5 flex-shrink-0 ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`} />
-              <span className={`text-sm md:text-base font-medium ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`}>
-                Aug 2023 - Nov 2024
-              </span>
-            </div>
-            <div className="space-y-2">
-              <div className="flex flex-wrap items-center gap-2 text-sm md:text-base">
-                <span className="font-semibold">Core Technical Team</span>
-                <span className="text-gray-400">•</span>
-                <span>Google Developer Student Club</span>
-              </div>
-              <ul className={`list-disc list-inside text-sm md:text-base ${isDarkMode ? 'text-gray-300' : 'text-gray-600'} space-y-1`}>
-                <li>Contributed to club website development using React, Golang, and Firebase</li>
-                <li>Improved uptime and reliability of web services in club's technical projects</li>
-                <li>Conducted technical events on Golang and Web Security</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section id="skills" className="py-8 sm:py-10 md:py-12">
         <h2 className={`text-xl sm:text-2xl md:text-3xl font-bold mb-6 ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`}>Skills</h2>
@@ -357,14 +331,12 @@ export default function Portfolio() {
               {[
                 { name: 'C/C++', icon: <Code className="w-4 h-4" /> },
                 { name: 'Java', icon: <Code className="w-4 h-4" /> },
-                { name: 'Go', icon: <Code className="w-4 h-4" /> },
                 { name: 'Python', icon: <Code className="w-4 h-4" /> },
-                { name: 'PowerShell', icon: <Terminal className="w-4 h-4" /> },
-                { name: 'Bash', icon: <Terminal className="w-4 h-4" /> },
                 { name: 'JavaScript', icon: <Code className="w-4 h-4" /> },
-                { name: 'HTML/CSS', icon: <Code className="w-4 h-4" /> },
+                { name: 'Go', icon: <Code className="w-4 h-4" /> },
                 { name: 'SQL', icon: <Database className="w-4 h-4" /> },
-                { name: 'LATEX', icon: <Code className="w-4 h-4" /> }
+                { name: 'HTML', icon: <Code className="w-4 h-4" /> },
+                { name: 'CSS', icon: <Paintbrush className="w-4 h-4" /> }
               ].map((skill) => (
                 <div
                   key={skill.name}
@@ -387,7 +359,7 @@ export default function Portfolio() {
               {[
                 { name: 'React', icon: <Layout className="w-4 h-4" /> },
                 { name: 'Node.js', icon: <Server className="w-4 h-4" /> },
-                { name: 'Express', icon: <Server className="w-4 h-4" /> }
+                { name: 'Express.js', icon: <Server className="w-4 h-4" /> }
               ].map((skill) => (
                 <div
                   key={skill.name}
@@ -404,20 +376,63 @@ export default function Portfolio() {
 
           <div>
             <h3 className={`text-base md:text-lg font-semibold mb-3 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-              Developer Tools
+              Developer Tools & Technologies
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
               {[
-                { name: 'Unix', icon: <Terminal className="w-4 h-4" /> },
                 { name: 'Linux/WSL', icon: <Terminal className="w-4 h-4" /> },
-                { name: 'Windows', icon: <Layout className="w-4 h-4" /> },
                 { name: 'Docker', icon: <Box className="w-4 h-4" /> },
                 { name: 'Kubernetes', icon: <Box className="w-4 h-4" /> },
-                { name: 'Terraform', icon: <Cloud className="w-4 h-4" /> },
-                { name: 'Git/GitHub', icon: <GitBranch className="w-4 h-4" /> },
-                { name: 'Firebase', icon: <Database className="w-4 h-4" /> },
                 { name: 'Jenkins', icon: <Server className="w-4 h-4" /> },
-                { name: 'Postman', icon: <Send className="w-4 h-4" /> }
+                { name: 'Git/GitHub', icon: <GitBranch className="w-4 h-4" /> },
+                { name: 'Azure', icon: <Cloud className="w-4 h-4" /> }
+              ].map((skill) => (
+                <div
+                  key={skill.name}
+                  className={`flex items-center space-x-2 p-3 rounded-lg min-h-[48px] ${isDarkMode ? 'bg-gray-800/50' : 'bg-gray-200/50'
+                    } ${isDarkMode ? 'text-gray-300 hover:text-yellow-500' : 'text-gray-600 hover:text-blue-700'
+                    } transition-colors duration-200`}
+                >
+                  {skill.icon}
+                  <span className="text-sm md:text-base">{skill.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h3 className={`text-base md:text-lg font-semibold mb-3 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+              Data & Visualization Tools
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
+              {[
+                { name: 'Tableau', icon: <Database className="w-4 h-4" /> },
+                { name: 'Power BI', icon: <Database className="w-4 h-4" /> },
+                { name: 'Excel', icon: <FileText className="w-4 h-4" /> },
+                { name: 'LaTeX', icon: <Code className="w-4 h-4" /> }
+              ].map((skill) => (
+                <div
+                  key={skill.name}
+                  className={`flex items-center space-x-2 p-3 rounded-lg min-h-[48px] ${isDarkMode ? 'bg-gray-800/50' : 'bg-gray-200/50'
+                    } ${isDarkMode ? 'text-gray-300 hover:text-yellow-500' : 'text-gray-600 hover:text-blue-700'
+                    } transition-colors duration-200`}
+                >
+                  {skill.icon}
+                  <span className="text-sm md:text-base">{skill.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h3 className={`text-base md:text-lg font-semibold mb-3 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+              Databases
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
+              {[
+                { name: 'PostgreSQL', icon: <Database className="w-4 h-4" /> },
+                { name: 'MongoDB', icon: <Database className="w-4 h-4" /> },
+                { name: 'SQLite', icon: <Database className="w-4 h-4" /> }
               ].map((skill) => (
                 <div
                   key={skill.name}
@@ -484,8 +499,8 @@ export default function Portfolio() {
           </div>
           <div className={`${isDarkMode ? 'bg-gray-800/50' : 'bg-gray-200/50'} p-4 sm:p-6 rounded`}>
             <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-3 sm:mb-4">Visitor Log</h3>
-            <VisitorLog 
-              isDarkMode={isDarkMode} 
+            <VisitorLog
+              isDarkMode={isDarkMode}
               onVisitorCountChange={(count) => setTotalVisitors(count)}
             />
           </div>
@@ -559,7 +574,7 @@ export default function Portfolio() {
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
               <span className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                {new Date().getFullYear()} sajal kumar
+                {new Date().getFullYear()} sajal
               </span>
               <span className={`hidden sm:inline-block ${isDarkMode ? 'text-gray-400' : 'text-gray-400'}`}>•</span>
               <span className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
@@ -575,7 +590,7 @@ export default function Portfolio() {
               </span>
             </div>
             <div className={`text-xs ${isDarkMode ? 'text-gray-300' : 'text-gray-400'}`}>
-              <span>Last updated: 04/12/2024</span>
+              <span>Last updated: 01/08/2025</span>
             </div>
           </div>
         </div>
@@ -633,7 +648,7 @@ export default function Portfolio() {
 
             {/* Visitor Counter */}
             <div className="hidden lg:flex">
-              <VisitorCounter 
+              <VisitorCounter
                 isDarkMode={isDarkMode}
                 initialCount={totalVisitors}
               />
@@ -641,7 +656,7 @@ export default function Portfolio() {
 
             <div className="flex items-center space-x-1 sm:space-x-2 md:space-x-4">
               <a
-                href="https://drive.google.com/file/d/1iqej1qEix-X106yCMyUgS6rrqgZVUhx1/view?usp=sharing"
+                href="https://drive.google.com/file/d/1Y0hyNXn47Z-zPCFVGqffrQo21YYmIFno/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`flex items-center space-x-1 px-2 sm:px-3 py-1.5 rounded-lg transition-colors duration-200 min-h-[44px] ${isDarkMode
@@ -650,7 +665,7 @@ export default function Portfolio() {
                   }`}
                 onClick={(e) => {
                   e.preventDefault();
-                  window.open('https://drive.google.com/file/d/1iqej1qEix-X106yCMyUgS6rrqgZVUhx1/view?usp=sharing', '_blank', 'noopener,noreferrer');
+                  window.open('https://drive.google.com/file/d/1Y0hyNXn47Z-zPCFVGqffrQo21YYmIFno/view?usp=sharing', '_blank', 'noopener,noreferrer');
                 }}
               >
                 <FileText className="w-4 h-4" />

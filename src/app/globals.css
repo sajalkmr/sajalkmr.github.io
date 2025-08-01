@@ -24,7 +24,8 @@ html.dark {
   }
 }
 
-html, body {
+html,
+body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -41,7 +42,7 @@ html, body {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
   }
-  
+
   body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -50,13 +51,21 @@ html, body {
 
 /* Improve touch interactions */
 @media (hover: none) and (pointer: coarse) {
-  button, a, [role="button"] {
+
+  button,
+  a,
+  [role="button"] {
     min-height: 44px;
     min-width: 44px;
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: Helvetica, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
