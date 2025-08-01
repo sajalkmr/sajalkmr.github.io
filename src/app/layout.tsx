@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import 'leaflet/dist/leaflet.css';
-import AnalyticsBanner from "./components/AnalyticsBanner";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -125,7 +124,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        <AnalyticsBanner />
       </body>
     </html>
   );
