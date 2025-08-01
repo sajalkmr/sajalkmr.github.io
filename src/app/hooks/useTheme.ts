@@ -1,15 +1,26 @@
 import { useEffect, useState } from 'react';
 
 export const useTheme = () => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
-    if (typeof window === 'undefined') return true; // default dark to avoid flash
-    return document.documentElement.classList.contains('dark');
-  });
+  // Always start with dark mode to match server rendering
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
+  const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', isDarkMode);
-    document.documentElement.classList.toggle('light', !isDarkMode);
-  }, [isDarkMode]);
+    // On hydration, check the actual DOM state
+    if (typeof window !== 'undefined') {
+      const actualTheme = document.documentElement.classList.contains('dark');
+      setIsDarkMode(actualTheme);
+      setIsHydrated(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Only update DOM after hydration to avoid conflicts
+    if (isHydrated) {
+      document.documentElement.classList.toggle('dark', isDarkMode);
+      document.documentElement.classList.toggle('light', !isDarkMode);
+    }
+  }, [isDarkMode, isHydrated]);
 
   const toggleTheme = () => {
     setIsDarkMode(prev => {

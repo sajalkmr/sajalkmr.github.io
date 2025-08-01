@@ -11,10 +11,10 @@ const ClientMap = dynamic(
   { 
     ssr: false,
     loading: () => (
-      <div className="h-[500px] md:h-[600px] bg-gray-800 rounded-lg flex items-center justify-center shadow-lg">
+      <div className="h-[300px] sm:h-[400px] md:h-[500px] bg-gray-800 rounded-lg flex items-center justify-center shadow-lg">
         <div className="flex flex-col items-center space-y-4">
           <LoadingSpinner size="lg" />
-          <span className="text-yellow-500 text-lg font-medium">Loading map...</span>
+          <span className="text-yellow-500 text-sm sm:text-base md:text-lg font-medium">Loading map...</span>
         </div>
       </div>
     )
@@ -172,8 +172,8 @@ export const VisitorMap: React.FC<VisitorMapProps> = ({ isDarkMode }) => {
   }
 
   return (
-    <div ref={containerRef} className="container mx-auto px-4 max-w-5xl">
-      <div className="h-[500px] md:h-[600px] bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+    <div ref={containerRef} className="container mx-auto px-0 sm:px-4 max-w-5xl">
+      <div className="h-[300px] sm:h-[400px] md:h-[500px] bg-gray-800 rounded-lg overflow-hidden shadow-lg">
         {inView ? (
           <ClientMap locations={visitorLocations} isDarkMode={isDarkMode} />
         ) : (
