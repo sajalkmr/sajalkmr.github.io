@@ -3,11 +3,7 @@
 import { useEffect, useState } from 'react'
 import { Users, Activity } from 'lucide-react'
 import { supabase } from '../../lib/supabaseClient'
-
-interface VisitorCounterProps {
-  isDarkMode: boolean
-  initialCount?: number
-}
+import { VisitorCounterProps } from '../types/visitor'
 
 export const VisitorCounter: React.FC<VisitorCounterProps> = ({
   isDarkMode,

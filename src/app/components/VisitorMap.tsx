@@ -2,38 +2,17 @@
 
 import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
-import dynamic from 'next/dynamic';
 import { LoadingSpinner } from './LoadingSpinner';
-import { VisitorLocation } from '../types/visitor';
+import { DynamicClientMap } from './DynamicClientMap';
+import { VisitorLocation, VisitorMapProps } from '../types/visitor';
 import { supabase } from '../../lib/supabaseClient';
 
 
 
-const ClientMap = dynamic(
-  () => import('./ClientMap').then(mod => ({ default: mod.ClientMap })),
-  { 
-    ssr: false,
-    loading: () => (
-      <div className="h-[300px] sm:h-[400px] md:h-[500px] bg-gray-800 rounded-lg flex items-center justify-center shadow-lg">
-        <div className="flex flex-col items-center space-y-4">
-          <LoadingSpinner size="lg" />
-          <span className="text-yellow-500 text-sm sm:text-base md:text-lg font-medium">Loading map...</span>
-        </div>
-      </div>
-    )
-  }
-);
-
-interface VisitorMapProps {
-  isDarkMode: boolean;
-}
-
 export const VisitorMap: React.FC<VisitorMapProps> = ({ isDarkMode }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [inView, setInView] = useState(false);
-  const mapStyle = isDarkMode 
-    ? 'mapbox://styles/mapbox/dark-v11'
-    : 'mapbox://styles/mapbox/light-v11';
+
 
   const [visitorLocations, setVisitorLocations] = useState<VisitorLocation[]>([]);
   const [currentVisitorLocation, setCurrentVisitorLocation] = useState<VisitorLocation | undefined>();
@@ -172,14 +151,14 @@ export const VisitorMap: React.FC<VisitorMapProps> = ({ isDarkMode }) => {
               const storedLocations = localStorage.getItem('visitorLocations');
               if (storedLocations) {
                 const parsed = JSON.parse(storedLocations);
-                existingLocations = parsed.filter((loc: any) => 
+                existingLocations = parsed.filter((loc: VisitorLocation) => 
                   typeof loc.lat === 'number' && !isNaN(loc.lat) &&
                   typeof loc.lon === 'number' && !isNaN(loc.lon) &&
                   typeof loc.country === 'string' &&
                   typeof loc.count === 'number'
                 );
               }
-            } catch (storageErr) {
+            } catch {
               existingLocations = [];
             }
 
@@ -218,14 +197,14 @@ export const VisitorMap: React.FC<VisitorMapProps> = ({ isDarkMode }) => {
             const storedLocations = localStorage.getItem('visitorLocations');
             if (storedLocations) {
               const parsed = JSON.parse(storedLocations);
-              existingLocations = parsed.filter((loc: any) => 
+              existingLocations = parsed.filter((loc: VisitorLocation) => 
                 typeof loc.lat === 'number' && !isNaN(loc.lat) &&
                 typeof loc.lon === 'number' && !isNaN(loc.lon) &&
                 typeof loc.country === 'string' &&
                 typeof loc.count === 'number'
               );
             }
-          } catch (storageErr) {
+          } catch {
             existingLocations = [];
           }
 
@@ -299,7 +278,7 @@ export const VisitorMap: React.FC<VisitorMapProps> = ({ isDarkMode }) => {
     <div ref={containerRef} className="container mx-auto px-0 sm:px-4 max-w-5xl">
       <div className="h-[300px] sm:h-[400px] md:h-[500px] bg-gray-800 rounded-lg overflow-hidden shadow-lg">
         {inView ? (
-          <ClientMap 
+          <DynamicClientMap 
             locations={visitorLocations} 
             currentVisitorLocation={currentVisitorLocation}
             isDarkMode={isDarkMode} 

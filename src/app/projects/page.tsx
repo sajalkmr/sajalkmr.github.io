@@ -1,10 +1,10 @@
 'use client'
 
 import { useTheme } from '../hooks/useTheme';
-import { useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowLeft, GitBranch, ExternalLink, Sun, Moon } from 'lucide-react'
+import { ArrowLeft, Sun, Moon } from 'lucide-react'
+import { getOptimizedImageProps } from '../../lib/imageUtils'
 
 export default function Projects() {
   const { isDarkMode, toggleTheme } = useTheme();
@@ -209,10 +209,8 @@ export default function Projects() {
                 <div className="lg:w-64 flex flex-col items-center gap-4">
                   <div className="w-full aspect-square relative rounded-lg overflow-hidden border-2 border-gray-300 dark:border-gray-700">
                     <Image
-                      src="/profile.png"
-                      alt={`${project.name} preview`}
+                      {...getOptimizedImageProps("/profile.png", `${project.name} preview`, "project")}
                       fill
-                      sizes="(max-width: 1024px) 100vw, 256px"
                       className="object-cover"
                     />
                   </div>

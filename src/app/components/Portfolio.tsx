@@ -3,20 +3,21 @@
 import { useState, useEffect, useRef } from 'react'
 import { useTheme } from '../hooks/useTheme'
 import {
-  Code, Mail, Github, Hourglass, Zap, Brain, Atom,
-  Linkedin, Twitter, MessageCircle, Send,
+  Code, Mail, Github, Zap, Brain,
+  Linkedin, Twitter, MessageCircle,
   Sun, Moon, Layout, Server, Paintbrush,
   Database, GitBranch, Box, Cloud,
-  Terminal, Code2, FileText, ArrowRight
+  Terminal, FileText, ArrowRight
 } from 'lucide-react'
 import { VisitorLog } from './VisitorLog'
-import { VisitorMap } from './VisitorMap'
+import { DynamicVisitorMap } from './DynamicVisitorMap'
 import { VisitorCounter } from './VisitorCounter'
 
 
 
 import Link from 'next/link'
 import Image from "next/image"
+import { getOptimizedImageProps } from '../../lib/imageUtils'
 
 export const SKILLS = [
   { category: 'Languages', icon: Code, items: ['C/C++', 'Java', 'Python', 'JavaScript', 'Go', 'SQL', 'HTML', 'CSS'] },
@@ -208,12 +209,9 @@ export default function Portfolio() {
             <div className="w-full md:w-1/2 flex justify-center md:justify-start">
               <div className="aspect-square relative rounded-full overflow-hidden border-4 border-gray-200 dark:border-gray-800 w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64">
                 <Image
-                  src="/profile.png"
-                  alt="Sajal Kumar"
+                  {...getOptimizedImageProps("/profile.png", "Sajal Kumar", "profile")}
                   fill
-                  sizes="(max-width: 640px) 160px, (max-width: 768px) 192px, 256px"
                   className="rounded-full object-cover"
-                  priority
                 />
               </div>
             </div>
@@ -459,7 +457,7 @@ export default function Portfolio() {
                 } transition-colors duration-200`}
             >
               <div className="flex items-center gap-3 mb-2">
-                <img
+                <Image
                   src={cert.logo}
                   alt={cert.name}
                   width={24}
@@ -495,7 +493,7 @@ export default function Portfolio() {
         <div className="space-y-8 sm:space-y-12">
           <div className={`${isDarkMode ? 'bg-gray-800/50' : 'bg-gray-200/50'} p-4 sm:p-6 rounded`}>
             <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-3 sm:mb-4">Visitor Map</h3>
-            <VisitorMap isDarkMode={isDarkMode} />
+            <DynamicVisitorMap isDarkMode={isDarkMode} />
           </div>
           <div className={`${isDarkMode ? 'bg-gray-800/50' : 'bg-gray-200/50'} p-4 sm:p-6 rounded`}>
             <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-3 sm:mb-4">Visitor Log</h3>
@@ -629,7 +627,6 @@ export default function Portfolio() {
               {[
                 { name: 'about', path: '#about' },
                 { name: 'projects', path: '#projects' },
-                { name: 'experience', path: '#experience' },
                 { name: 'skills', path: '#skills' },
                 { name: 'analytics', path: '#analytics' },
                 { name: 'contact', path: '#contact' }
@@ -712,7 +709,6 @@ export default function Portfolio() {
                 {[
                   { name: 'about', path: '#about' },
                   { name: 'projects', path: '/projects' },
-                  { name: 'experience', path: '#experience' },
                   { name: 'skills', path: '#skills' },
                   { name: 'analytics', path: '#analytics' },
                   { name: 'contact', path: '#contact' }

@@ -1,8 +1,6 @@
 'use client'
 
-interface LoadingSpinnerProps {
-  size?: 'sm' | 'md' | 'lg';
-}
+import { LoadingSpinnerProps } from '../types/visitor';
 
 export function LoadingSpinner({ size = 'md' }: LoadingSpinnerProps) {
   const sizeClasses = {

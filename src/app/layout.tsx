@@ -7,11 +7,15 @@ const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
+  display: "swap",
+  preload: true,
 });
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
+  display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -87,6 +91,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="preload" href="/profile.png" as="image" type="image/png" />
+        <link rel="preload" href="/favicon.ico" as="image" type="image/x-icon" />
         <script
           id="theme-init-inline"
           dangerouslySetInnerHTML={{

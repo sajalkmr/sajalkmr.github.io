@@ -4,13 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import styles from './ClientMap.module.css';
-import { VisitorLocation } from '../types/visitor';
-
-interface ClientMapProps {
-  locations: VisitorLocation[];
-  currentVisitorLocation?: VisitorLocation;
-  isDarkMode: boolean;
-}
+import { VisitorLocation, ClientMapProps } from '../types/visitor';
 
 export const ClientMap: React.FC<ClientMapProps> = ({ locations, currentVisitorLocation, isDarkMode }) => {
   const mapRef = useRef<L.Map | null>(null);

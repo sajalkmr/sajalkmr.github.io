@@ -4,13 +4,10 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { formatDistanceToNow } from 'date-fns';
 import { ChevronDown, ChevronUp, Clock } from 'lucide-react';
-import { VisitorInfo } from '../types/visitor';
+import { VisitorInfo, VisitorLogProps } from '../types/visitor';
 import { supabase } from '../../lib/supabaseClient';
 
-interface VisitorLogProps {
-  isDarkMode: boolean;
-  onVisitorCountChange?: (count: number) => void;
-}
+
 
 export const VisitorLog: React.FC<VisitorLogProps> = ({ 
   isDarkMode, 
@@ -21,15 +18,16 @@ export const VisitorLog: React.FC<VisitorLogProps> = ({
   const [error, setError] = useState<string | null>(null);
   const [expanded, setExpanded] = useState(false);
   const [visibleCount, setVisibleCount] = useState(3);
-
   const [totalVisitors, setTotalVisitors] = useState(0);
+
+
 
   // Sound notification function
   const playNotificationSound = () => {
     if (typeof window !== 'undefined') {
       try {
         // Create a simple notification sound using Web Audio API
-        const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+        const audioContext = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
         const oscillator = audioContext.createOscillator();
         const gainNode = audioContext.createGain();
         
@@ -236,7 +234,7 @@ export const VisitorLog: React.FC<VisitorLogProps> = ({
           } else {
             setError('Unable to load visitor data');
           }
-        } catch (localStorageErr) {
+        } catch {
           setError('Unable to load visitor data');
         }
         setLoading(false);
@@ -244,7 +242,7 @@ export const VisitorLog: React.FC<VisitorLogProps> = ({
     };
 
     getVisitorInfo();
-  }, []);
+  }, [onVisitorCountChange]);
 
   // Real-time updates for new visitors
   useEffect(() => {
@@ -317,7 +315,7 @@ export const VisitorLog: React.FC<VisitorLogProps> = ({
     return () => {
       subscription.unsubscribe();
     };
-  }, []);
+  }, [onVisitorCountChange]);
 
 
 

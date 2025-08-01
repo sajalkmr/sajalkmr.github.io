@@ -31,9 +31,10 @@ body {
   padding: 0;
   color: var(--foreground);
   background: var(--background);
-  font-family: Helvetica, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-geist-sans), Helvetica, -apple-system, BlinkMacSystemFont, sans-serif;
   width: 100%;
   overscroll-behavior: none;
+  font-display: swap;
 }
 
 /* Mobile-specific optimizations */
@@ -46,6 +47,33 @@ body {
   body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+/* Optimize image loading */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Reduce layout shifts */
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+/* Optimize animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
@@ -66,7 +94,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Helvetica, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-geist-mono), Helvetica, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-display: swap;
 }
 
 .leaflet-container {
