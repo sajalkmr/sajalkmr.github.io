@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import 'leaflet/dist/leaflet.css';
@@ -23,11 +23,6 @@ export const metadata: Metadata = {
   description: "personal portfolio",
   icons: {
     icon: '/favicon.ico'
-  },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
   },
   openGraph: {
     title: "sajal | Portfolio",
@@ -54,6 +49,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://sajalkmr.github.io/"
   }
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 // Add structured data (JSON-LD)

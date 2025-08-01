@@ -203,11 +203,11 @@ export default function Portfolio() {
 
   const renderHome = () => (
     <>
-      <section id="about" className="min-h-screen flex items-center justify-center pt-4 sm:pt-8 md:pt-0 md:-mt-24 relative z-0">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-8 md:gap-8">
+      <section id="about" className="min-h-screen flex items-center justify-center pt-8 sm:pt-12 md:pt-0 md:-mt-16 relative z-0">
+        <div className="max-w-6xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 w-full">
+          <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-8 md:gap-12">
             <div className="w-full md:w-1/2 flex justify-center md:justify-start">
-              <div className="aspect-square relative rounded-full overflow-hidden border-4 border-gray-200 dark:border-gray-800 w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64">
+              <div className="aspect-square relative rounded-full overflow-hidden border-4 border-gray-200 dark:border-gray-800 w-32 h-32 xs:w-40 xs:h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64">
                 <Image
                   {...getOptimizedImageProps("/profile.png", "Sajal Kumar", "profile")}
                   fill
@@ -217,14 +217,14 @@ export default function Portfolio() {
             </div>
 
             <div className="w-full md:w-1/2 text-center md:text-left">
-              <div className="mb-4">
-                <h1 className={`text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold font-mono ${isDarkMode ? 'text-gray-100' : 'text-gray-900'}`}>
+              <div className="mb-4 sm:mb-6">
+                <h1 className={`text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold font-mono leading-tight ${isDarkMode ? 'text-gray-100' : 'text-gray-900'}`}>
                   Sajal Kumar
                 </h1>
-                <p className={`text-sm sm:text-base md:text-xl mt-2 ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`}>
+                <p className={`text-sm xs:text-base sm:text-lg md:text-xl mt-2 ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`}>
                   Developer in Progress
                 </p>
-                <p className={`text-xs sm:text-sm md:text-base mt-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                <p className={`text-xs xs:text-sm sm:text-base mt-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                   Bengaluru, India
                 </p>
               </div>
@@ -238,12 +238,12 @@ export default function Portfolio() {
                   <p>On the lookout for exciting projects & internships. let’s connect! 🚀</p>
                 </div>
 
-                <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3 sm:gap-4">
+                <div className="flex flex-col xs:flex-row items-center justify-center md:justify-start gap-3 xs:gap-4">
                   <a
                     href="https://t.me/sajalkmr"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`${isDarkMode ? 'bg-yellow-500 hover:bg-yellow-400 text-gray-900' : 'bg-blue-700 hover:bg-blue-600 text-white'} px-4 py-2 rounded-md text-sm transition-colors duration-200 flex items-center gap-2 min-h-[44px] w-full sm:w-auto justify-center`}
+                    className={`${isDarkMode ? 'bg-yellow-500 hover:bg-yellow-400 text-gray-900' : 'bg-blue-700 hover:bg-blue-600 text-white'} px-4 py-2.5 rounded-lg text-sm font-medium transition-colors duration-200 flex items-center gap-2 min-h-[48px] w-full xs:w-auto justify-center shadow-lg hover:shadow-xl`}
                   >
                     <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
                       <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
@@ -253,7 +253,7 @@ export default function Portfolio() {
 
                   <a
                     href="mailto:sajalkmr@proton.me"
-                    className={`${isDarkMode ? 'bg-gray-700 hover:bg-gray-600 text-gray-100' : 'bg-gray-300 hover:bg-gray-400 text-gray-900'} px-4 py-2 rounded-md text-sm transition-colors duration-200 flex items-center gap-2 min-h-[44px] w-full sm:w-auto justify-center`}
+                    className={`${isDarkMode ? 'bg-gray-700 hover:bg-gray-600 text-gray-100' : 'bg-gray-300 hover:bg-gray-400 text-gray-900'} px-4 py-2.5 rounded-lg text-sm font-medium transition-colors duration-200 flex items-center gap-2 min-h-[48px] w-full xs:w-auto justify-center shadow-md hover:shadow-lg`}
                   >
                     <Mail className="w-4 h-4" />
                     Email Me
@@ -265,21 +265,21 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section id="projects" className="py-8 sm:py-10 md:py-12">
-        <h2 className={`text-xl sm:text-2xl md:text-3xl font-bold mb-6 ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`}>Projects</h2>
+      <section id="projects" className="py-6 sm:py-8 md:py-10 lg:py-12">
+        <h2 className={`text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-4 sm:mb-6 ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`}>Projects</h2>
         <div className="space-y-6">
           <div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
               {TW_PROJECTS.map((project) => (
-                <div key={project.name} className={`${isDarkMode ? 'bg-gray-800/50' : 'bg-gray-200/50'} rounded-lg p-4 space-y-3`}>
-                  <div className="flex justify-between items-start">
-                    <h3 className="text-base md:text-lg font-semibold">{project.name}</h3>
+                <div key={project.name} className={`${isDarkMode ? 'bg-gray-800/50 hover:bg-gray-800/70' : 'bg-gray-200/50 hover:bg-gray-200/70'} rounded-lg p-4 sm:p-5 space-y-3 transition-colors duration-200`}>
+                  <div className="flex justify-between items-start gap-3">
+                    <h3 className="text-base sm:text-lg font-semibold leading-tight">{project.name}</h3>
                     {project.github && (
                       <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`p-1.5 rounded-lg transition-colors duration-200 ${
+                        className={`p-2 rounded-lg transition-colors duration-200 flex-shrink-0 ${
                           isDarkMode 
                             ? 'hover:bg-gray-700/50 text-gray-400 hover:text-gray-200' 
                             : 'hover:bg-gray-300/50 text-gray-600 hover:text-gray-800'
@@ -290,10 +290,10 @@ export default function Portfolio() {
                       </a>
                     )}
                   </div>
-                  <p className={`text-sm md:text-base ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>{project.description}</p>
+                  <p className={`text-sm sm:text-base leading-relaxed ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>{project.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
-                      <span key={tech} className={`text-xs px-2 py-1 rounded ${isDarkMode ? 'bg-gray-700' : 'bg-gray-300'}`}>{tech}</span>
+                      <span key={tech} className={`text-xs px-2.5 py-1 rounded-full ${isDarkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-300 text-gray-700'}`}>{tech}</span>
                     ))}
                   </div>
                 </div>
@@ -317,15 +317,15 @@ export default function Portfolio() {
 
 
 
-      <section id="skills" className="py-8 sm:py-10 md:py-12">
-        <h2 className={`text-xl sm:text-2xl md:text-3xl font-bold mb-6 ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`}>Skills</h2>
+      <section id="skills" className="py-6 sm:py-8 md:py-10 lg:py-12">
+        <h2 className={`text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-4 sm:mb-6 ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`}>Skills</h2>
 
-        <div className="space-y-6">
+        <div className="space-y-6 sm:space-y-8">
           <div>
-            <h3 className={`text-base md:text-lg font-semibold mb-3 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+            <h3 className={`text-base sm:text-lg font-semibold mb-3 sm:mb-4 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
               Languages
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
+            <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
               {[
                 { name: 'C/C++', icon: <Code className="w-4 h-4" /> },
                 { name: 'Java', icon: <Code className="w-4 h-4" /> },
@@ -350,10 +350,10 @@ export default function Portfolio() {
           </div>
 
           <div>
-            <h3 className={`text-base md:text-lg font-semibold mb-3 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+            <h3 className={`text-base sm:text-lg font-semibold mb-3 sm:mb-4 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
               Frameworks & Libraries
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
+            <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
               {[
                 { name: 'React', icon: <Layout className="w-4 h-4" /> },
                 { name: 'Node.js', icon: <Server className="w-4 h-4" /> },
@@ -373,10 +373,10 @@ export default function Portfolio() {
           </div>
 
           <div>
-            <h3 className={`text-base md:text-lg font-semibold mb-3 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+            <h3 className={`text-base sm:text-lg font-semibold mb-3 sm:mb-4 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
               Developer Tools & Technologies
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
+            <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
               {[
                 { name: 'Linux/WSL', icon: <Terminal className="w-4 h-4" /> },
                 { name: 'Docker', icon: <Box className="w-4 h-4" /> },
@@ -399,10 +399,10 @@ export default function Portfolio() {
           </div>
 
           <div>
-            <h3 className={`text-base md:text-lg font-semibold mb-3 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+            <h3 className={`text-base sm:text-lg font-semibold mb-3 sm:mb-4 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
               Data & Visualization Tools
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
+            <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
               {[
                 { name: 'Tableau', icon: <Database className="w-4 h-4" /> },
                 { name: 'Power BI', icon: <Database className="w-4 h-4" /> },
@@ -423,10 +423,10 @@ export default function Portfolio() {
           </div>
 
           <div>
-            <h3 className={`text-base md:text-lg font-semibold mb-3 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+            <h3 className={`text-base sm:text-lg font-semibold mb-3 sm:mb-4 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
               Databases
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
+            <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
               {[
                 { name: 'PostgreSQL', icon: <Database className="w-4 h-4" /> },
                 { name: 'MongoDB', icon: <Database className="w-4 h-4" /> },
@@ -447,9 +447,9 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section id="certifications" className="py-8 sm:py-10 md:py-12">
-        <h2 className={`text-xl sm:text-2xl md:text-3xl font-bold mb-6 ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`}>Certifications</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <section id="certifications" className="py-6 sm:py-8 md:py-10 lg:py-12">
+        <h2 className={`text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-4 sm:mb-6 ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`}>Certifications</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
           {CERTIFICATIONS.map((cert, index) => (
             <div
               key={index}
@@ -488,15 +488,15 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section id="analytics" className="py-8 sm:py-10 md:py-12">
-        <h2 className={`text-xl sm:text-2xl md:text-3xl font-bold mb-6 ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`}>Visitor Analytics</h2>
-        <div className="space-y-8 sm:space-y-12">
-          <div className={`${isDarkMode ? 'bg-gray-800/50' : 'bg-gray-200/50'} p-4 sm:p-6 rounded`}>
-            <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-3 sm:mb-4">Visitor Map</h3>
+      <section id="analytics" className="py-6 sm:py-8 md:py-10 lg:py-12">
+        <h2 className={`text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-4 sm:mb-6 ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`}>Visitor Analytics</h2>
+        <div className="space-y-6 sm:space-y-8 lg:space-y-12">
+          <div className={`${isDarkMode ? 'bg-gray-800/50' : 'bg-gray-200/50'} p-3 sm:p-4 lg:p-6 rounded-lg`}>
+            <h3 className="text-base sm:text-lg lg:text-xl font-semibold mb-3 sm:mb-4">Visitor Map</h3>
             <DynamicVisitorMap isDarkMode={isDarkMode} />
           </div>
-          <div className={`${isDarkMode ? 'bg-gray-800/50' : 'bg-gray-200/50'} p-4 sm:p-6 rounded`}>
-            <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-3 sm:mb-4">Visitor Log</h3>
+          <div className={`${isDarkMode ? 'bg-gray-800/50' : 'bg-gray-200/50'} p-3 sm:p-4 lg:p-6 rounded-lg`}>
+            <h3 className="text-base sm:text-lg lg:text-xl font-semibold mb-3 sm:mb-4">Visitor Log</h3>
             <VisitorLog
               isDarkMode={isDarkMode}
               onVisitorCountChange={(count) => setTotalVisitors(count)}
@@ -507,8 +507,8 @@ export default function Portfolio() {
 
       <footer id="contact" className={`${isDarkMode ? 'border-gray-800' : 'border-gray-200'} mt-12 md:mt-16 pt-16`}>
         <div className="mb-12 md:mb-16">
-          <h2 className={`text-xl sm:text-2xl md:text-3xl font-bold mb-6 ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`}>Contact</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+          <h2 className={`text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-4 sm:mb-6 ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'}`}>Contact</h2>
+          <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {[
               {
                 href: "mailto:sajalkmr@proton.me",
@@ -554,7 +554,7 @@ export default function Portfolio() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`flex items-center gap-3 p-3 rounded-lg min-h-[60px] ${isDarkMode ? 'bg-gray-800/50' : 'bg-gray-200/50'
+                className={`flex items-center gap-3 p-3 sm:p-4 rounded-lg min-h-[56px] sm:min-h-[64px] ${isDarkMode ? 'bg-gray-800/50 hover:bg-gray-800/70' : 'bg-gray-200/50 hover:bg-gray-200/70'
                   } ${isDarkMode ? 'text-gray-300' : 'text-gray-600'
                   } ${color} transition-all duration-200 hover:scale-[1.02]`}
               >
@@ -623,7 +623,7 @@ export default function Portfolio() {
               </a>
             </h1>
 
-            <nav className="hidden sm:flex items-center space-x-6 flex-grow justify-center">
+            <nav className="hidden sm:flex items-center space-x-3 md:space-x-6 flex-grow justify-center">
               {[
                 { name: 'about', path: '#about' },
                 { name: 'projects', path: '#projects' },
@@ -634,9 +634,9 @@ export default function Portfolio() {
                 <a
                   key={name}
                   href={path}
-                  className={`text-sm transition-colors ${activeSection === name
-                    ? (isDarkMode ? 'text-yellow-500 font-semibold' : 'text-blue-700 font-semibold')
-                    : (isDarkMode ? 'text-gray-300 hover:text-yellow-500' : 'text-gray-600 hover:text-blue-700')}`}
+                  className={`text-xs sm:text-sm px-2 py-1 rounded-md transition-colors ${activeSection === name
+                    ? (isDarkMode ? 'text-yellow-500 font-semibold bg-yellow-500/10' : 'text-blue-700 font-semibold bg-blue-700/10')
+                    : (isDarkMode ? 'text-gray-300 hover:text-yellow-500 hover:bg-yellow-500/5' : 'text-gray-600 hover:text-blue-700 hover:bg-blue-700/5')}`}
                 >
                   {name.charAt(0).toUpperCase() + name.slice(1)}
                 </a>
@@ -704,11 +704,11 @@ export default function Portfolio() {
           </div>
 
           {isMenuOpen && (
-            <nav className={`sm:hidden py-4 border-t ${isDarkMode ? 'border-gray-800' : 'border-gray-200'}`}>
+            <nav className={`sm:hidden py-4 border-t ${isDarkMode ? 'border-gray-800' : 'border-gray-200'} ${isDarkMode ? 'bg-gray-900/95' : 'bg-white/95'} backdrop-blur-sm`}>
               <div className="flex flex-col space-y-1">
                 {[
                   { name: 'about', path: '#about' },
-                  { name: 'projects', path: '/projects' },
+                  { name: 'projects', path: '#projects' },
                   { name: 'skills', path: '#skills' },
                   { name: 'analytics', path: '#analytics' },
                   { name: 'contact', path: '#contact' }
@@ -716,8 +716,8 @@ export default function Portfolio() {
                   <a
                     key={name}
                     href={path}
-                    className={`text-base px-4 py-3 rounded-lg min-h-[44px] flex items-center ${activeSection === name
-                      ? (isDarkMode ? 'bg-gray-800/60 text-yellow-500' : 'bg-gray-200 text-blue-700')
+                    className={`text-base px-4 py-3 rounded-lg min-h-[48px] flex items-center ${activeSection === name
+                      ? (isDarkMode ? 'bg-gray-800/60 text-yellow-500 font-semibold' : 'bg-gray-200 text-blue-700 font-semibold')
                       : (isDarkMode ? 'hover:bg-gray-800/50 text-gray-300 hover:text-yellow-500' : 'hover:bg-gray-200/50 text-gray-600 hover:text-blue-700')
                       } transition-colors`}
                     onClick={() => setIsMenuOpen(false)}
@@ -725,6 +725,14 @@ export default function Portfolio() {
                     {name.charAt(0).toUpperCase() + name.slice(1)}
                   </a>
                 ))}
+                
+                {/* Mobile visitor counter */}
+                <div className="px-4 py-3 mt-2 border-t border-gray-700/30">
+                  <VisitorCounter
+                    isDarkMode={isDarkMode}
+                    initialCount={totalVisitors}
+                  />
+                </div>
               </div>
             </nav>
           )}
@@ -732,7 +740,7 @@ export default function Portfolio() {
       </header>
 
       <div className={`min-h-screen ${isDarkMode ? 'bg-gray-900/80 text-gray-100' : 'bg-gray-100/80 text-gray-900'
-        } pt-20 sm:pt-28 md:pt-32 px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12 md:pb-16 font-mono relative transition-colors duration-500`}>
+        } pt-16 sm:pt-20 md:pt-24 px-3 sm:px-4 md:px-6 lg:px-8 pb-8 sm:pb-12 md:pb-16 font-mono relative transition-colors duration-500`}>
         <div className="relative z-10 max-w-5xl mx-auto">
           {renderHome()}
         </div>

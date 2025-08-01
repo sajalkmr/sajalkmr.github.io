@@ -113,17 +113,17 @@ export default function Projects() {
 
   return (
     <div className={`min-h-screen ${isDarkMode ? 'bg-gray-900/95 text-gray-100' : 'bg-gray-100/95 text-gray-900'
-      } font-mono transition-colors duration-500`}>
+      } font-mono transition-colors duration-500 overflow-x-hidden`}>
       <div className="fixed inset-0 w-full h-full -z-10">
-        <canvas className="w-full h-full" />
+        <canvas className="w-full h-full hidden md:block" />
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-12">
-          <div className="flex items-center gap-4">
+      <div className="max-w-5xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-8 sm:py-12 md:py-16 lg:py-20">
+        <div className="flex flex-col xs:flex-row items-start xs:items-center justify-between gap-3 sm:gap-4 mb-8 sm:mb-12">
+          <div className="flex flex-col xs:flex-row xs:items-center gap-3 xs:gap-4 w-full xs:w-auto">
             <Link
               href="/"
-              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg transition-colors duration-200 ${isDarkMode
+              className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors duration-200 min-h-[44px] w-fit ${isDarkMode
                 ? 'bg-yellow-500/10 text-yellow-500 hover:bg-yellow-500/20'
                 : 'bg-blue-700/10 text-blue-700 hover:bg-blue-700/20'
                 }`}
@@ -131,12 +131,13 @@ export default function Projects() {
               <ArrowLeft className="w-4 h-4" />
               <span className="text-sm font-medium">Back</span>
             </Link>
-            <h1 className="text-2xl sm:text-3xl font-bold">All Projects</h1>
+            <h1 className="text-xl xs:text-2xl sm:text-3xl font-bold">All Projects</h1>
           </div>
           <button
             onClick={toggleTheme}
-            className={`p-2 rounded-lg transition-colors duration-200 ${isDarkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-gray-200 hover:bg-gray-300'
+            className={`p-2 rounded-lg transition-colors duration-200 min-h-[44px] min-w-[44px] self-end xs:self-auto ${isDarkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-gray-200 hover:bg-gray-300'
               }`}
+            aria-label={isDarkMode ? 'Switch to light theme' : 'Switch to dark theme'}
           >
             {isDarkMode ? (
               <Sun className="w-4 h-4 text-yellow-500" />
@@ -146,18 +147,18 @@ export default function Projects() {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 gap-8">
+        <div className="grid grid-cols-1 gap-6 sm:gap-8">
           {projects.map((project) => (
             <div
               key={project.name}
-              className={`${isDarkMode ? 'bg-gray-800/50' : 'bg-gray-200/50'
-                } rounded-lg p-6 transition-all duration-200 hover:scale-[1.01]`}
+              className={`${isDarkMode ? 'bg-gray-800/50 hover:bg-gray-800/70' : 'bg-gray-200/50 hover:bg-gray-200/70'
+                } rounded-lg p-4 sm:p-6 transition-all duration-200 hover:scale-[1.01]`}
             >
-              <div className="flex flex-col lg:flex-row gap-6">
+              <div className="flex flex-col lg:flex-row gap-4 sm:gap-6">
                 {/* Left side - Project content */}
-                <div className="flex-1 space-y-4">
-                  <div className="flex justify-between items-start">
-                    <h2 className={`text-xl sm:text-2xl font-bold ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'
+                <div className="flex-1 space-y-3 sm:space-y-4">
+                  <div className="flex flex-col xs:flex-row xs:justify-between xs:items-start gap-2 xs:gap-4">
+                    <h2 className={`text-lg xs:text-xl sm:text-2xl font-bold leading-tight ${isDarkMode ? 'text-yellow-500' : 'text-blue-700'
                       }`}>
                       {project.name}
                     </h2>
@@ -166,10 +167,11 @@ export default function Projects() {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`p-2 rounded-lg transition-colors duration-200 lg:hidden ${isDarkMode
-                          ? 'hover:bg-gray-700/50'
-                          : 'hover:bg-gray-300/50'
+                        className={`p-2 rounded-lg transition-colors duration-200 lg:hidden min-h-[44px] min-w-[44px] flex items-center justify-center self-start xs:self-auto ${isDarkMode
+                          ? 'hover:bg-gray-700/50 text-gray-400 hover:text-gray-200'
+                          : 'hover:bg-gray-300/50 text-gray-600 hover:text-gray-800'
                           }`}
+                        aria-label={`View ${project.name} on GitHub`}
                       >
                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
@@ -178,23 +180,23 @@ export default function Projects() {
                     )}
                   </div>
 
-                  <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} text-base`}>
+                  <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} text-sm sm:text-base leading-relaxed`}>
                     {project.description}
                   </p>
 
-                  <ul className="list-disc list-inside space-y-2 pl-4">
+                  <ul className="list-disc list-inside space-y-1.5 sm:space-y-2 pl-2 sm:pl-4">
                     {project.details.map((detail, index) => (
-                      <li key={index} className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                      <li key={index} className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'} text-sm sm:text-base leading-relaxed`}>
                         {detail}
                       </li>
                     ))}
                   </ul>
 
-                  <div className="flex flex-wrap gap-2 pt-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-2">
                     {project.tech.map((tech) => (
                       <span
                         key={tech}
-                        className={`text-sm px-3 py-1 rounded-full ${isDarkMode
+                        className={`text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-full ${isDarkMode
                           ? 'bg-gray-700/70 text-gray-300'
                           : 'bg-gray-300/70 text-gray-700'
                           }`}
@@ -206,8 +208,8 @@ export default function Projects() {
                 </div>
 
                 {/* Right side - Project image and GitHub link */}
-                <div className="lg:w-64 flex flex-col items-center gap-4">
-                  <div className="w-full aspect-square relative rounded-lg overflow-hidden border-2 border-gray-300 dark:border-gray-700">
+                <div className="w-full sm:w-48 md:w-56 lg:w-64 flex flex-col items-center gap-3 sm:gap-4 lg:flex-shrink-0">
+                  <div className="w-full max-w-48 sm:max-w-none aspect-square relative rounded-lg overflow-hidden border-2 border-gray-300 dark:border-gray-700 mx-auto">
                     <Image
                       {...getOptimizedImageProps("/profile.png", `${project.name} preview`, "project")}
                       fill
@@ -219,10 +221,11 @@ export default function Projects() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`hidden lg:flex items-center gap-2 px-4 py-2 rounded-lg transition-colors duration-200 ${isDarkMode
+                      className={`hidden lg:flex items-center gap-2 px-4 py-2 rounded-lg transition-colors duration-200 min-h-[44px] ${isDarkMode
                         ? 'bg-gray-700/50 hover:bg-gray-700 text-gray-300'
                         : 'bg-gray-300/50 hover:bg-gray-300 text-gray-700'
                         }`}
+                      aria-label={`View ${project.name} code on GitHub`}
                     >
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />

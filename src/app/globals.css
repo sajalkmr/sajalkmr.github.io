@@ -48,6 +48,25 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  
+  /* Prevent horizontal scroll on mobile */
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* Extra small devices (phones, 475px and down) */
+@media (max-width: 475px) {
+  /* Ensure text remains readable on very small screens */
+  html {
+    font-size: 14px;
+  }
+  
+  /* Reduce padding on very small screens */
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
 }
 
 /* Performance optimizations */
@@ -79,12 +98,48 @@ img {
 
 /* Improve touch interactions */
 @media (hover: none) and (pointer: coarse) {
-
   button,
   a,
   [role="button"] {
     min-height: 44px;
     min-width: 44px;
+  }
+  
+  /* Increase tap targets on mobile */
+  .mobile-tap-target {
+    min-height: 48px;
+    min-width: 48px;
+  }
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+  
+  h2 {
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+  
+  h3 {
+    font-size: 1.125rem;
+    line-height: 1.4;
+  }
+}
+
+/* Ensure proper spacing on all screen sizes */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
   }
 }
 
